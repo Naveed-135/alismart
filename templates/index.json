@@ -643,7 +643,8 @@
         "1664424486a2b084ab-1": {
           "type": "item",
           "settings": {
-            "image_rotation_degrees": 1.5,
+            "image": "shopify://shop_images/3493_1.jpg",
+            "image_rotation_degrees": 4,
             "subheading": "",
             "title": "Heading 2",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
