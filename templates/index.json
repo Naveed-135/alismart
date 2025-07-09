@@ -483,8 +483,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3497.jpg",
-            "title": "",
-            "heading_tag": "h4",
+            "title": "EYE PROTECTION",
+            "heading_tag": "h2",
             "link_url": "",
             "link_text": "",
             "mobile_text_position": "place-self-center text-center",
