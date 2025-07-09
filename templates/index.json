@@ -417,8 +417,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3495.webp",
-            "title": "Promote your products",
-            "heading_tag": "h4",
+            "title": "HEARING PROTECTION",
+            "heading_tag": "h2",
             "link_url": "",
             "link_text": "",
             "mobile_text_position": "place-self-center text-center",
@@ -483,7 +483,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3497.jpg",
-            "title": "Promote your products",
+            "title": "",
             "heading_tag": "h4",
             "link_url": "",
             "link_text": "",
