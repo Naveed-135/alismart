@@ -56,6 +56,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/18.webp",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
