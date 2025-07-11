@@ -11,6 +11,23 @@
   "type": "footer",
   "name": "Footer group",
   "sections": {
+    "newsletter_DehRjp": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Newsletter",
+        "content": "<p>Write something about what your customers will receive by subscribing to your newsletter.</p>",
+        "button_text": "Subscribe",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -76,6 +93,7 @@
     }
   },
   "order": [
+    "newsletter_DehRjp",
     "footer"
   ]
 }
