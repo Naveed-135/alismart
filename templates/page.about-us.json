@@ -51,46 +51,43 @@
         "overlay_opacity": 62
       }
     },
-    "media_with_text_DGmENV": {
-      "type": "media-with-text",
+    "rich_text_attJHX": {
+      "type": "rich-text",
       "blocks": {
-        "image_36zfky": {
-          "type": "image",
+        "heading_iXiKqN": {
+          "type": "heading",
           "settings": {
-            "image": "shopify://shop_images/DSC07113.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center text-center",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#f2f2f2",
-            "background_gradient": "",
-            "text_color": "#1a1a1a",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "text": "Alis Mart – Excellence in Protective Workwear & PPE",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_Wd9xaN": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>At Alis Mart, we are dedicated to providing top-quality protective workwear and personal protective equipment (PPE) that meet stringent industry safety standards. Our extensive collection includes protective gloves, helmets, goggles, and safety workwear clothing, all designed to ensure the utmost safety and comfort for professionals across various sectors.<br/>We pride ourselves on offering products that strike the perfect balance between quality and affordability, making safety accessible without compromising on excellence. Our commitment to customer satisfaction is reflected in our free shipping via Royal Mail Tracked 24 and hassle-free returns, ensuring a seamless shopping experience.<br/>Located at 15 Headley Rd, Woodley, Reading RG5 4JB, United Kingdom, we are always ready to assist you with your safety needs. Feel free to contact us at +44 7424 429782 or via email at info@alismart.co.uk.<br/>Choose Alis Mart for reliable, high-quality protective workwear and PPE that you can trust.<br/><br/></p>"
           }
         }
       },
       "block_order": [
-        "image_36zfky"
+        "heading_iXiKqN",
+        "richtext_Wd9xaN"
       ],
-      "name": "Media with text",
+      "name": "Rich text",
       "settings": {
-        "full_width": false,
-        "alternate_media_position": false,
-        "spacing": "small"
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_rthzcf",
-    "media_with_text_DGmENV"
+    "rich_text_attJHX"
   ]
 }
