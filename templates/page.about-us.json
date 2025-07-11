@@ -25,7 +25,7 @@
             "image": "shopify://shop_images/xlarge-L044_L049_CV04_L041_L043_AP12_CV05_PW52.jpg",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "desktop_text_position": "sm:place-self-start-center sm:text-center",
             "subheading": "Tell your story",
             "title": "Slide 1",
             "heading_tag": "h0",
