@@ -25,7 +25,7 @@
             "image": "shopify://shop_images/xlarge-L044_L049_CV04_L041_L043_AP12_CV05_PW52.jpg",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-start-center sm:text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
             "subheading": "",
             "title": "About Us",
             "heading_tag": "h0",
@@ -54,7 +54,7 @@
         "transition_type": "fade_with_text",
         "autoplay": false,
         "cycle_speed": 6,
-        "background": "#F2F2F2",
+        "background": "#f2f2f2",
         "background_gradient": ""
       }
     }
