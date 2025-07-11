@@ -16,51 +16,51 @@
         "content_width": "100%"
       }
     },
-    "slideshow_b6Tdew": {
-      "type": "slideshow",
+    "image_with_text_overlay_rthzcf": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "image_8rD7WV": {
-          "type": "image",
+        "subheading_4UYzpR": {
+          "type": "subheading",
           "settings": {
-            "image": "shopify://shop_images/xlarge-L044_L049_CV04_L041_L043_AP12_CV05_PW52.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "About Us",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30,
-            "background": "",
-            "background_gradient": ""
+            "text": "Subheading"
+          }
+        },
+        "heading_n8BYRf": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_EerKcw": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         }
       },
       "block_order": [
-        "image_8rD7WV"
+        "subheading_4UYzpR",
+        "heading_n8BYRf",
+        "richtext_EerKcw"
       ],
-      "name": "Slideshow",
+      "name": "Image with text overlay",
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "show_initial_transition": false,
+        "enable_parallax": false,
         "image_size": "lg",
-        "controls_type": "dots",
-        "transition_type": "fade_with_text",
-        "autoplay": false,
-        "cycle_speed": 6,
-        "background": "#f2f2f2",
-        "background_gradient": ""
+        "image": "shopify://shop_images/xlarge-L044_L049_CV04_L041_L043_AP12_CV05_PW52.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     }
   },
   "order": [
     "main",
-    "slideshow_b6Tdew"
+    "image_with_text_overlay_rthzcf"
   ]
 }
