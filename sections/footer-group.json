@@ -18,10 +18,10 @@
           "type": "newsletter",
           "settings": {
             "image": "shopify://shop_images/logo_1.jpg",
-            "image_width": 300,
+            "image_width": 170,
             "heading_size": "h3",
             "title": "Sign up to our newsletter",
-            "content": "<p>Alis Mart, 15 Headley Rd, Woodley, Reading RG5 4JB, UK<br/>Phone:<a href=\"tel:+447424429782\">+447424429782<br/></a>Email:<a href=\"mailto:info@alismart.co.uk\" title=\"info@alismart.co.uk\">info@alismart.co.uk</a><br/></p>"
+            "content": "<h5>Alis Mart, 15 Headley Rd, Woodley, Reading RG5 4JB, UK<br/>Phone:<a href=\"tel:+447424429782\">+447424429782<br/></a>Email:<a href=\"mailto:info@alismart.co.uk\" title=\"info@alismart.co.uk\">info@alismart.co.uk</a><br/></h5>"
           }
         },
         "links": {
