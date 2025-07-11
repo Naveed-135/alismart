@@ -14,13 +14,13 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter": {
+        "newsletter_NydbcL": {
           "type": "newsletter",
           "settings": {
             "image": "shopify://shop_images/logo_1.jpg",
             "image_width": 300,
             "heading_size": "h3",
-            "title": "Sign up for new stories and personal offers",
+            "title": "",
             "content": ""
           }
         },
@@ -58,7 +58,7 @@
         }
       },
       "block_order": [
-        "newsletter",
+        "newsletter_NydbcL",
         "links",
         "links_p4zQpU",
         "links_UnGawR",
