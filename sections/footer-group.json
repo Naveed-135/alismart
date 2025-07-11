@@ -28,22 +28,40 @@
           "settings": {
             "menu": "footer",
             "show_menu_title": true,
+            "menu_title": "CATEGORIES"
+          }
+        },
+        "links_p4zQpU": {
+          "type": "links",
+          "settings": {
+            "menu": "footer",
+            "show_menu_title": true,
             "menu_title": ""
           }
         },
-        "text": {
-          "type": "text",
+        "links_UnGawR": {
+          "type": "links",
           "settings": {
-            "title": "About",
-            "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>",
-            "enable_follow_on_shop": true
+            "menu": "footer",
+            "show_menu_title": true,
+            "menu_title": ""
+          }
+        },
+        "links_6UzPkz": {
+          "type": "links",
+          "settings": {
+            "menu": "footer",
+            "show_menu_title": true,
+            "menu_title": ""
           }
         }
       },
       "block_order": [
         "newsletter",
         "links",
-        "text"
+        "links_p4zQpU",
+        "links_UnGawR",
+        "links_6UzPkz"
       ],
       "settings": {
         "show_social_media": true,
