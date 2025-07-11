@@ -34,24 +34,24 @@
         "links_p4zQpU": {
           "type": "links",
           "settings": {
-            "menu": "footer",
+            "menu": "footer-menu-2",
             "show_menu_title": true,
-            "menu_title": ""
+            "menu_title": "MEMBERSHIP"
           }
         },
         "links_UnGawR": {
           "type": "links",
           "settings": {
-            "menu": "footer",
+            "menu": "footer-menu-3",
             "show_menu_title": true,
-            "menu_title": ""
+            "menu_title": "Sales Agreement"
           }
         },
         "links_6UzPkz": {
           "type": "links",
           "settings": {
-            "menu": "footer",
-            "show_menu_title": true,
+            "menu": "footer-menu-4",
+            "show_menu_title": false,
             "menu_title": ""
           }
         }
