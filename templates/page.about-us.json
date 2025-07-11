@@ -122,12 +122,28 @@
             "title": "Any question?",
             "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
           }
+        },
+        "item_pzVCHg": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_yqJnhQ": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
         }
       },
       "block_order": [
         "item_8Tb3et",
         "item_Vk676y",
-        "item_PQbDpm"
+        "item_PQbDpm",
+        "item_pzVCHg",
+        "item_yqJnhQ"
       ],
       "name": "FAQ",
       "settings": {
