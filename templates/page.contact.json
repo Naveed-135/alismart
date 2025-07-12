@@ -55,9 +55,9 @@
       "type": "contact",
       "settings": {
         "full_width": true,
-        "subheading": "Contact Us",
+        "subheading": "",
         "title": "Send Us a Message",
-        "content": "",
+        "content": "<p>Connect with Us Easily - Drop Us a Message Today!</p>",
         "text_position": "center",
         "contact_form_size": "large",
         "background": "",
