@@ -19,28 +19,21 @@
     "image_with_text_overlay_fGFfJd": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_EkTpXV": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
         "heading_jcUzgC": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "CONTACT US",
             "heading_tag": "h1"
           }
         },
         "richtext_M7tngf": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "content": "<p>Enhance Your Online Shopping Experience - Contact Us for Expert Assistance.</p>"
           }
         }
       },
       "block_order": [
-        "subheading_EkTpXV",
         "heading_jcUzgC",
         "richtext_M7tngf"
       ],
