@@ -70,11 +70,75 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "logo_list_hqEYca": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_EXCGBz": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_f9MBmW": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_RkmzwQ": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_DdBxVB": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_yCYaLd": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_EXCGBz",
+        "logo_f9MBmW",
+        "logo_RkmzwQ",
+        "logo_DdBxVB",
+        "logo_yCYaLd"
+      ],
+      "name": "Logo list",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "Logo list",
+        "content": "",
+        "text_alignment": "start",
+        "items_per_row": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_fGFfJd",
-    "contact"
+    "contact",
+    "logo_list_hqEYca"
   ]
 }
