@@ -117,7 +117,7 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "logo_item_background": "",
+        "logo_item_background": "#efefef",
         "logo_item_border": ""
       }
     }
