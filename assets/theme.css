@@ -5812,6 +5812,7 @@ product-rerender {
 
   .footer__block-list {
     flex-wrap: nowrap;
+    gap: 40px;
   }
 
   .footer__block--newsletter, .footer__block--app {

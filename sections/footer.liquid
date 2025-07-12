@@ -90,22 +90,7 @@
                       </div>
                     {%- endif -%}
 
-                    {%- form 'customer', id: 'footer-newsletter', class: 'footer__newsletter-form form' -%}
-                      {%- if form.posted_successfully? -%}
-                        {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
-                        {%- render 'banner', content: success_message, status: 'success' -%}
-                      {%- else -%}
-                        {%- if form.errors -%}
-                          {%- capture error_message -%}{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}{%- endcapture -%}
-                          {%- render 'banner', content: error_message, status: 'error' -%}
-                        {%- endif -%}
-
-                        <input type="hidden" name="contact[tags]" value="newsletter">
-
-                        {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
-                        {%- render 'input', name: 'contact[email]', label: label, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send', self_submit: true -%}
-                      {%- endif -%}
-                    {%- endform -%}
+                   
                   </div>
                 </div>
             {%- endcase -%}
