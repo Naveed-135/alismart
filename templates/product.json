@@ -116,7 +116,10 @@
       "type": "related-products",
       "settings": {
         "recommendations_count": 6,
-        "products": [],
+        "products": [
+          "portwest-navy-bizweld-jacket",
+          "portwest-black-tall-preston-trousers"
+        ],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
