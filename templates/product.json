@@ -191,11 +191,12 @@
         "quote_WtEH39": {
           "type": "quote",
           "settings": {
+            "logo": "shopify://shop_images/Background_4.png",
             "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "Rachel F.",
+            "content": "I had an amazing experience bidding on rare collectibles. The process was smooth, and I got a great deal!",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         }
       },
