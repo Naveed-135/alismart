@@ -313,7 +313,9 @@
       "type": "featured-collection",
       "settings": {
         "collection": "",
-        "products": [],
+        "products": [
+          "portwest-navy-bizweld-jacket"
+        ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": false,
