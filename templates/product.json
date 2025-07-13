@@ -79,6 +79,19 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "offer_X7xFJY": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "Shipping",
+            "content": "<p>Short content about your shipping rates or discounts.</p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -104,6 +117,7 @@
         "description",
         "variant_picker",
         "quantity_selector",
+        "offer_X7xFJY",
         "buy_buttons"
       ],
       "settings": {
