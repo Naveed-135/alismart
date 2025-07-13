@@ -22,6 +22,10 @@
             "heading_tag": "h2"
           }
         },
+        "sku_eQLgKh": {
+          "type": "sku",
+          "settings": {}
+        },
         "badges": {
           "type": "badges",
           "settings": {}
@@ -84,6 +88,7 @@
       "block_order": [
         "vendor",
         "title",
+        "sku_eQLgKh",
         "badges",
         "price",
         "rating",
