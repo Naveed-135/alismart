@@ -46,6 +46,12 @@
           "type": "payment_terms",
           "settings": {}
         },
+        "inventory_EneKQ4": {
+          "type": "inventory",
+          "settings": {
+            "low_inventory_threshold": 0
+          }
+        },
         "separator": {
           "type": "separator",
           "settings": {}
@@ -93,6 +99,7 @@
         "price",
         "rating",
         "payment_terms",
+        "inventory_EneKQ4",
         "separator",
         "description",
         "variant_picker",
