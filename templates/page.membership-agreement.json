@@ -9,12 +9,56 @@
  */
 {
   "sections": {
+    "image_with_text_overlay_cUKJPA": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_q4mpzK": {
+          "type": "subheading",
+          "settings": {
+            "text": "Terms of Use for Ycollection Members"
+          }
+        },
+        "heading_fgAQPV": {
+          "type": "heading",
+          "settings": {
+            "text": "Membership Agreement",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_DtCxMi": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>This agreement defines the rules, benefits, and responsibilities of Ycollection members.By signing up, you agree to comply with our membership policies and conditions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_q4mpzK",
+        "heading_fgAQPV",
+        "richtext_DtCxMi"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "main": {
       "type": "main-page",
-      "settings": {}
+      "settings": {
+        "content_width": "80ch"
+      }
     }
   },
   "order": [
+    "image_with_text_overlay_cUKJPA",
     "main"
   ]
 }
