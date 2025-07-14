@@ -57,7 +57,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/18.webp",
-            "stretch_image": true,
+            "stretch_image": false,
             "link_text": "",
             "link_url": "",
             "background": "",
@@ -227,6 +227,7 @@
     },
     "scrolling-text": {
       "type": "scrolling-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "text": "Build For Hardwork",
