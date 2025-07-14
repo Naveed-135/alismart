@@ -260,7 +260,7 @@
         "collection-2": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "t-shirt",
             "subheading": "",
             "title": "",
             "url": "",
@@ -274,7 +274,7 @@
         "collection-3": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "trousers",
             "subheading": "",
             "title": "",
             "url": "",
