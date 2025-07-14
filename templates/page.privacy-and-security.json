@@ -9,32 +9,26 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "content_width": "80ch"
-      }
-    },
     "image_with_text_overlay_XiLAkb": {
       "type": "image-with-text-overlay",
       "blocks": {
         "subheading_W4Bfpi": {
           "type": "subheading",
           "settings": {
-            "text": "Subheading"
+            "text": "Your Data, Our Responsibility"
           }
         },
         "heading_pUikQT": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "Privacy and Security",
             "heading_tag": "h1"
           }
         },
         "richtext_VdFgFt": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "content": "<p>We prioritize the privacy and security of your personal information.Our practices ensure safe transactions and protection against unauthorized access.</p>"
           }
         }
       },
@@ -54,6 +48,12 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "80ch"
       }
     }
   },
