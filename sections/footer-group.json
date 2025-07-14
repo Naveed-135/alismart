@@ -69,8 +69,8 @@
           "type": "links",
           "settings": {
             "menu": "footer-menu-4",
-            "show_menu_title": false,
-            "menu_title": ""
+            "show_menu_title": true,
+            "menu_title": "Company Info"
           }
         }
       },
