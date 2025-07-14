@@ -314,7 +314,11 @@
       "settings": {
         "collection": "",
         "products": [
-          "portwest-navy-bizweld-jacket"
+          "portwest-navy-bizweld-jacket",
+          "assembly-glove-960-pairs",
+          "bakers-shirt-s-s",
+          "bakers-trousers",
+          "cold-10-latex-crinkle-glove"
         ],
         "full_width": true,
         "stack_products": false,
