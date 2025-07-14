@@ -11,10 +11,54 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "image_with_text_overlay_w8M6V6": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_KJAWRz": {
+          "type": "subheading",
+          "settings": {
+            "text": "Our Terms for Product Sales and Transactions"
+          }
+        },
+        "heading_kHU9xi": {
+          "type": "heading",
+          "settings": {
+            "text": "Sales Agreement",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_7iVXLc": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>This agreement outlines the terms for purchasing from Ycollection.It covers pricing, delivery, returns, and customer responsibilities.<br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_KJAWRz",
+        "heading_kHU9xi",
+        "richtext_7iVXLc"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_with_text_overlay_w8M6V6"
   ]
 }
