@@ -84,7 +84,7 @@ LIQUID
                 {%- endif -%}
               {%- endcapture -%}
 
-              <a {% if block.settings.link_url %}href="{{ block.settings.link_url }}"{% endif %} class="content-over-media rounded" style="--content-over-media-overlay: {{ block.settings.overlay_color.rgb }} / {{ block.settings.overlay_opacity | divided_by: 100.0 }}">
+              <a {% if block.settings.link_url %}href="{{ block.settings.link_url }}"{% endif %} class="content-over-media rounded-full" style="--content-over-media-overlay: {{ block.settings.overlay_color.rgb }} / {{ block.settings.overlay_opacity | divided_by: 100.0 }}">
                 {{- item_content -}}
               </a>
             {%- else -%}
