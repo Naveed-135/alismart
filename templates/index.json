@@ -57,7 +57,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/18.webp",
-            "stretch_image": false,
+            "stretch_image": true,
             "link_text": "",
             "link_url": "",
             "background": "",
