@@ -62,7 +62,8 @@
             "menu_item": "",
             "layout": "horizontal",
             "submenu_style": "bold_heading",
-            "image_heading_1": "",
+            "image_1": "shopify://shop_images/A510BLU.jpg",
+            "image_heading_1": "YUR",
             "image_link_1": "",
             "image_text_color_1": "#ffffff",
             "image_heading_2": "",
@@ -101,7 +102,6 @@
         "show_country_flag": true,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
-        "transparent_logo": "shopify://shop_images/logo_1.jpg",
         "reduce_padding": true,
         "background_opacity": 100,
         "background_blur_radius": 0
