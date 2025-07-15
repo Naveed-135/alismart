@@ -107,6 +107,32 @@
         "spacing": "small"
       }
     },
+    "custom_liquid_6RmiVf": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<p style=\"text-align: center\">Write or copy/paste Liquid code</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_html_WcEdfn": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div class=\"contact-section\">\n    <h2>CONTACT INFORMATION</h2>\n    <div class=\"company-name\">ALIS MART LTD</div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-location-dot\"></i>\n      <span>15 Headley Rd, Woodley, Reading RG5 4JB, United Kingdom</span>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-phone\"></i>\n      <a href=\"tel:+447424429782\">+44 7424 429782</a>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-envelope\"></i>\n      <a href=\"mailto:info@alismart.co.uk\">info@alismart.co.uk</a>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-clock\"></i>\n      <span>Head Office Working Hours : Monday to Friday 08.30–18.00<br>Saturday 10.00–15.00</span>\n    </div>\n\n    <div class=\"map-container\">\n      <iframe src=\"https://www.google.com/maps?q=15%20Headley%20Rd,%20Woodley,%20Reading%20RG5%204JB,%20United%20Kingdom&amp;output=embed\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n      </iframe>\n    </div>\n  </div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "logo_list_hqEYca": {
       "type": "logo-list",
       "blocks": {
@@ -163,6 +189,8 @@
     "image_with_text_overlay_fGFfJd",
     "contact",
     "media_with_text_MPKrbJ",
+    "custom_liquid_6RmiVf",
+    "custom_html_WcEdfn",
     "logo_list_hqEYca"
   ]
 }
