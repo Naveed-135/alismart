@@ -107,6 +107,20 @@
         "spacing": "small"
       }
     },
+    "custom_html_WcEdfn": {
+      "type": "custom-html",
+      "custom_css": [],
+      "name": "Custom HTML",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div class=\"contact-section\">\n    <h2>CONTACT INFORMATION</h2>\n    <div class=\"company-name\">ALIS MART LTD</div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-location-dot\"></i>\n      <span>15 Headley Rd, Woodley, Reading RG5 4JB, United Kingdom</span>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-phone\"></i>\n      <a href=\"tel:+447424429782\">+44 7424 429782</a>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-envelope\"></i>\n      <a href=\"mailto:info@alismart.co.uk\">info@alismart.co.uk</a>\n    </div>\n\n    <div class=\"contact-item\">\n      <i class=\"fas fa-clock\"></i>\n      <span>Head Office Working Hours : Monday to Friday 08.30–18.00<br>Saturday 10.00–15.00</span>\n    </div>\n\n    <div class=\"map-container\">\n      <iframe src=\"https://www.google.com/maps?q=15%20Headley%20Rd,%20Woodley,%20Reading%20RG5%204JB,%20United%20Kingdom&amp;output=embed\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n      </iframe>\n    </div>\n  </div>\n<style>\n .contact-section {\n      max-width: 1200px;\n      margin: 40px auto;\n      padding: 0 20px;\n    }\n\n    .contact-section h2 {\n      font-weight: bold;\n      font-size: 20px;\n      margin-bottom: 20px;\n    }\n\n    .company-name {\n      font-weight: 900;\n      font-size: 16px;\n      margin-bottom: 20px;\n    }\n\n    .contact-item {\n      display: flex;\n      align-items: flex-start;\n      gap: 10px;\n      margin-bottom: 15px;\n      color: #333;\n    }\n\n    .contact-item i {\n      color: #bada00;\n      font-size: 18px;\n      min-width: 24px;\n      margin-top: 4px;\n    }\n\n    .contact-item a {\n      color: #333;\n      text-decoration: none;\n    }\n\n    .map-container {\n      margin-top: 30px;\n      height: 400px;\n    }\n\n    .map-container iframe {\n      width: 100%;\n      height: 100%;\n      border: none;\n    }\n\n    @media (max-width: 768px) {\n      .contact-section {\n        padding: 0 10px;\n      }\n    }</style>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "logo_list_hqEYca": {
       "type": "logo-list",
       "blocks": {
@@ -163,6 +177,7 @@
     "image_with_text_overlay_fGFfJd",
     "contact",
     "media_with_text_MPKrbJ",
+    "custom_html_WcEdfn",
     "logo_list_hqEYca"
   ]
 }
