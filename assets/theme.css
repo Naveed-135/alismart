@@ -6982,13 +6982,15 @@ product-rerender {
 }
 
 .logo-list__item {
-  padding: var(--spacing-6);
+  /* padding: var(--spacing-6); */
   border: 1px solid rgb(var(--logo-list-items-border));
   justify-content: center;
   align-items: center;
   display: flex;
 }
-
+.logo-list__item  img{
+  border-radius: 50%;
+}
 .logo-list__image {
   width: 100%;
   max-width: var(--logo-list-image-max-width, none);
@@ -7000,7 +7002,7 @@ product-rerender {
   }
 
   .logo-list__item {
-    padding: var(--spacing-11);
+    /* padding: var(--spacing-11); */
   }
 }
 

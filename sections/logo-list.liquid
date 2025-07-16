@@ -63,7 +63,7 @@
           {%- endcapture -%}
 
           {% capture item_attribute %}
-           {%- render 'surface', class: 'logo-list__item', background: section.settings.logo_item_background, background_fallback: 'bg-secondary' -%}
+           {%- render 'surface', class: 'logo-list__item', background: section.settings.logo_item_background, background_fallback: '' -%}
           {%- endcapture -%}
 
           {%- if block.settings.link != blank -%}
