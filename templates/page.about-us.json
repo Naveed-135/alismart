@@ -40,10 +40,11 @@
       "name": "Image with text overlay",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": true,
+        "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "lg",
-        "image": "shopify://shop_images/xlarge-L044_L049_CV04_L041_L043_AP12_CV05_PW52.jpg",
+        "image": "shopify://shop_images/58.webp",
+        "mobile_image": "shopify://shop_images/DSC07131.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
