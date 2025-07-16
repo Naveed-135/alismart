@@ -249,6 +249,7 @@
         "logo_fRKTA9": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3499.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -256,6 +257,7 @@
         "logo_aWP4Ef": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3500.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -263,6 +265,7 @@
         "logo_8NHPbn": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3501.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -270,11 +273,48 @@
         "logo_gYjqWA": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3503.webp",
             "logo_width": 120,
             "link": ""
           }
         },
         "logo_NzhMNM": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/3504.jpg",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_ptreKV": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_3zrtfi": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_exCTpx": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_xBwEVK": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_jGn9Vq": {
           "type": "logo",
           "settings": {
             "logo_width": 120,
@@ -289,7 +329,12 @@
         "logo_aWP4Ef",
         "logo_8NHPbn",
         "logo_gYjqWA",
-        "logo_NzhMNM"
+        "logo_NzhMNM",
+        "logo_ptreKV",
+        "logo_3zrtfi",
+        "logo_exCTpx",
+        "logo_xBwEVK",
+        "logo_jGn9Vq"
       ],
       "name": "Logo list",
       "settings": {
