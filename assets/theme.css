@@ -6978,7 +6978,9 @@ product-rerender {
 .logo-list {
   grid: var(--logo-list-grid);
   gap: var(--spacing-2);
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .logo-list__item {
@@ -6987,6 +6989,8 @@ product-rerender {
   justify-content: center;
   align-items: center;
   display: flex;
+  width: 150px;
+  margin: auto;
 }
 .logo-list__item  img{
   border-radius: 50%;
@@ -6999,10 +7003,11 @@ product-rerender {
 @media screen and (min-width: 700px) {
   .logo-list {
     gap: var(--spacing-6);
+    justify-content: center;
   }
 
   .logo-list__item {
-    /* padding: var(--spacing-11); */
+   margin: 0px;
   }
 }
 
