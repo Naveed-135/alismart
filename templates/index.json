@@ -289,6 +289,7 @@
         "logo_ptreKV": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3502.webp",
             "logo_width": 120,
             "link": ""
           }
@@ -296,6 +297,7 @@
         "logo_3zrtfi": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3505.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -303,6 +305,7 @@
         "logo_exCTpx": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3506.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -310,13 +313,7 @@
         "logo_xBwEVK": {
           "type": "logo",
           "settings": {
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_jGn9Vq": {
-          "type": "logo",
-          "settings": {
+            "logo": "shopify://shop_images/3517.jpg",
             "logo_width": 120,
             "link": ""
           }
@@ -333,8 +330,7 @@
         "logo_ptreKV",
         "logo_3zrtfi",
         "logo_exCTpx",
-        "logo_xBwEVK",
-        "logo_jGn9Vq"
+        "logo_xBwEVK"
       ],
       "name": "Logo list",
       "settings": {
@@ -343,7 +339,7 @@
         "title": "Logo list",
         "content": "",
         "text_alignment": "start",
-        "items_per_row": 7,
+        "items_per_row": 6,
         "background": "",
         "background_gradient": "",
         "text_color": "",
