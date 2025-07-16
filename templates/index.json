@@ -227,6 +227,85 @@
         "heading_gradient": ""
       }
     },
+    "logo_list_bwQ7tF": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_fLgUJR": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_GQ4g96": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_fRKTA9": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_aWP4Ef": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_8NHPbn": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_gYjqWA": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_NzhMNM": {
+          "type": "logo",
+          "settings": {
+            "logo_width": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_fLgUJR",
+        "logo_GQ4g96",
+        "logo_fRKTA9",
+        "logo_aWP4Ef",
+        "logo_8NHPbn",
+        "logo_gYjqWA",
+        "logo_NzhMNM"
+      ],
+      "name": "Logo list",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "Logo list",
+        "content": "",
+        "text_alignment": "start",
+        "items_per_row": 7,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
     "collection-list": {
       "type": "collection-list",
       "blocks": {
@@ -598,6 +677,7 @@
   "order": [
     "image_with_text_overlay_c7WR3N",
     "image-link-blocks",
+    "logo_list_bwQ7tF",
     "collection-list",
     "featured-collection",
     "media-grid",
