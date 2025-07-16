@@ -241,6 +241,7 @@
         "logo_GQ4g96": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/3498.jpg",
             "logo_width": 120,
             "link": ""
           }
