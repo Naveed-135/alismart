@@ -84,7 +84,7 @@
           "settings": {
             "text_alignment": "start",
             "icon_position": "aligned",
-            "icon": "picto-coupon",
+            "icon": "picto-box",
             "icon_width": 20,
             "title": "Shipping",
             "content": "<p>Short content about your shipping rates or discounts.</p>",
