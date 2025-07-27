@@ -33,6 +33,7 @@
       "blocks": {
         "newsletter_NydbcL": {
           "type": "newsletter",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/logo_1.jpg",
             "image_width": 170,
@@ -43,6 +44,7 @@
         },
         "links": {
           "type": "links",
+          "disabled": true,
           "settings": {
             "menu": "footer",
             "show_menu_title": true,
