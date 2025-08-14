@@ -102,6 +102,18 @@
             "payment_button_background": "#ffffff",
             "payment_button_text_color": "#b7ea70"
           }
+        },
+        "button_pmLPDA": {
+          "type": "button",
+          "settings": {
+            "link": "shopify://pages/size-chart",
+            "text": "Size Chart",
+            "size": "xl",
+            "style": "outline",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
         }
       },
       "block_order": [
@@ -118,7 +130,8 @@
         "variant_picker",
         "quantity_selector",
         "offer_X7xFJY",
-        "buy_buttons"
+        "buy_buttons",
+        "button_pmLPDA"
       ],
       "settings": {
         "full_width": true,
