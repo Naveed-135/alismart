@@ -103,16 +103,14 @@
             "payment_button_text_color": "#b7ea70"
           }
         },
-        "button_pmLPDA": {
-          "type": "button",
+        "collapsible_text_Daq3QE": {
+          "type": "collapsible_text",
           "settings": {
-            "link": "shopify://pages/size-chart",
-            "text": "Size Chart",
-            "size": "xl",
-            "style": "outline",
-            "stretch": true,
-            "background": "",
-            "text_color": ""
+            "icon": "picto-document",
+            "icon_width": 20,
+            "title": "Size Chart",
+            "content": "",
+            "page": "size-chart"
           }
         }
       },
@@ -131,7 +129,7 @@
         "quantity_selector",
         "offer_X7xFJY",
         "buy_buttons",
-        "button_pmLPDA"
+        "collapsible_text_Daq3QE"
       ],
       "settings": {
         "full_width": true,
