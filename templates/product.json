@@ -107,7 +107,7 @@
           "type": "collapsible_text",
           "settings": {
             "icon": "picto-document",
-            "icon_width": 20,
+            "icon_width": 26,
             "title": "Size Chart",
             "content": "",
             "page": "size-chart"
