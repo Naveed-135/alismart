@@ -43,7 +43,7 @@
     "heading_letter_spacing": -2,
     "text_font": "barlow_n4",
     "text_font_size_desktop": 16,
-    "currency_code_enabled": false,
+    "currency_code_enabled": true,
     "heading_apparition": "split_fade",
     "color_swatch_style": "round",
     "show_vendor": true,
