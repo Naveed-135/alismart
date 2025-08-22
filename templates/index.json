@@ -55,6 +55,35 @@
     "collection-list": {
       "type": "collection-list",
       "blocks": {
+        "collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "trousers",
+            "image": "shopify://shop_images/large-T400_T501_AP65_B1601_PS54_PS45_PS10_01.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_Dz7VBM": {
+          "type": "collection",
+          "settings": {
+            "collection": "footwear",
+            "subheading": "",
+            "title": "",
+            "url": "shopify://collections/footwear",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "collection-1": {
           "type": "collection",
           "settings": {
@@ -62,6 +91,20 @@
             "subheading": "",
             "title": "",
             "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_4DzUUY": {
+          "type": "collection",
+          "settings": {
+            "collection": "ppe",
+            "subheading": "",
+            "title": "",
+            "url": "shopify://collections/ppe",
             "heading_tag": "h2",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
@@ -82,41 +125,14 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
-        },
-        "collection-3": {
-          "type": "collection",
-          "settings": {
-            "collection": "trousers",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_Dz7VBM": {
-          "type": "collection",
-          "settings": {
-            "collection": "footwear",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
         }
       },
       "block_order": [
-        "collection-1",
-        "collection-2",
         "collection-3",
-        "collection_Dz7VBM"
+        "collection_Dz7VBM",
+        "collection-1",
+        "collection_4DzUUY",
+        "collection-2"
       ],
       "settings": {
         "full_width": true,
