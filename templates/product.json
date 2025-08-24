@@ -252,6 +252,7 @@
         },
         "item_WW8CKf": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "title": "Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
@@ -259,6 +260,7 @@
         },
         "item_MUNHXq": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "title": "Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
