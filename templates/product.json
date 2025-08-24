@@ -185,17 +185,6 @@
             "rating": 5
           }
         },
-        "quote_faWepJ": {
-          "type": "quote",
-          "settings": {
-            "logo": "shopify://shop_images/Background_6.png",
-            "logo_width": 100,
-            "author": "Rachel F.",
-            "content": "I had an amazing experience purchasing Portwest rain suit. The process was smooth, and I got a great deal!",
-            "show_rating": true,
-            "rating": 4
-          }
-        },
         "quote_8jJWAN": {
           "type": "quote",
           "settings": {
@@ -206,12 +195,23 @@
             "show_rating": true,
             "rating": 5
           }
+        },
+        "quote_faWepJ": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify://shop_images/Background_6.png",
+            "logo_width": 100,
+            "author": "Rachel F.",
+            "content": "I had an amazing experience purchasing Portwest rain suit. The process was smooth, and I got a great deal!",
+            "show_rating": true,
+            "rating": 4
+          }
         }
       },
       "block_order": [
         "quote_WtEH39",
-        "quote_faWepJ",
-        "quote_8jJWAN"
+        "quote_8jJWAN",
+        "quote_faWepJ"
       ],
       "name": "Press",
       "settings": {
