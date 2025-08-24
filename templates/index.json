@@ -193,88 +193,88 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/18.webp",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/gloves"
           }
         },
         "logo_GQ4g96": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3498.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/ppe"
           }
         },
         "logo_fRKTA9": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3499.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         },
         "logo_aWP4Ef": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3500.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/ppe"
           }
         },
         "logo_8NHPbn": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3501.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/ppe"
           }
         },
         "logo_gYjqWA": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3503.webp",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         },
         "logo_NzhMNM": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3504.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         },
         "logo_ptreKV": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3502.webp",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         },
         "logo_3zrtfi": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3505.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         },
         "logo_exCTpx": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3506.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/footwear"
           }
         },
         "logo_xBwEVK": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/3517.jpg",
-            "logo_width": 200,
-            "link": ""
+            "logo_width": 100,
+            "link": "shopify://collections/trousers"
           }
         }
       },
