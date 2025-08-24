@@ -157,11 +157,14 @@
       "settings": {
         "collection": "",
         "products": [
-          "portwest-navy-bizweld-jacket",
-          "assembly-glove-960-pairs",
-          "bakers-shirt-s-s",
-          "bakers-trousers",
-          "cold-10-latex-crinkle-glove"
+          "portwest-hi-vis-sweatshirt",
+          "portwest-grip-13-pu-palm-glove",
+          "portwest-bizweld-work-fr-jacket",
+          "portwest-boot-bag",
+          "portwest-bizweld-work-fr-coverall-1",
+          "portwest-chefs-cumbria-jacket-s-s",
+          "portwest-chefs-mesh-air-pro-jacket-l-s",
+          "portwest-food-industry-apron"
         ],
         "full_width": true,
         "stack_products": false,
