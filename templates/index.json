@@ -58,7 +58,7 @@
         "collection-3": {
           "type": "collection",
           "settings": {
-            "collection": "trousers",
+            "collection": "clothing",
             "image": "shopify://shop_images/large-T400_T501_AP65_B1601_PS54_PS45_PS10_01.jpg",
             "subheading": "",
             "title": "",
@@ -210,7 +210,7 @@
           "settings": {
             "logo": "shopify://shop_images/3499.jpg",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         },
         "logo_aWP4Ef": {
@@ -234,7 +234,7 @@
           "settings": {
             "logo": "shopify://shop_images/3503.webp",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         },
         "logo_NzhMNM": {
@@ -242,7 +242,7 @@
           "settings": {
             "logo": "shopify://shop_images/3504.jpg",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         },
         "logo_ptreKV": {
@@ -250,7 +250,7 @@
           "settings": {
             "logo": "shopify://shop_images/3502.webp",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         },
         "logo_3zrtfi": {
@@ -258,7 +258,7 @@
           "settings": {
             "logo": "shopify://shop_images/3505.jpg",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         },
         "logo_exCTpx": {
@@ -274,7 +274,7 @@
           "settings": {
             "logo": "shopify://shop_images/3517.jpg",
             "logo_width": 100,
-            "link": "shopify://collections/trousers"
+            "link": "shopify://collections/clothing"
           }
         }
       },
@@ -339,7 +339,7 @@
             "image": "shopify://shop_images/3493_1.jpg",
             "title": "HIGH VISIBILITY",
             "heading_tag": "h4",
-            "link_url": "shopify://collections/trousers",
+            "link_url": "shopify://collections/clothing",
             "link_text": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_column_span": 1,
