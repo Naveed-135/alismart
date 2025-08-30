@@ -418,16 +418,6 @@
     "press": {
       "type": "press",
       "blocks": {
-        "16644243327ba53d2a-0": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "",
-            "content": "As described, fast shipping, excellent communication, highly recommended",
-            "show_rating": false,
-            "rating": 4
-          }
-        },
         "16644243327ba53d2a-1": {
           "type": "quote",
           "settings": {
@@ -437,11 +427,21 @@
             "show_rating": true,
             "rating": 5
           }
+        },
+        "16644243327ba53d2a-0": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Samuel J.",
+            "content": "As described, fast shipping, excellent communication, highly recommended",
+            "show_rating": true,
+            "rating": 4
+          }
         }
       },
       "block_order": [
-        "16644243327ba53d2a-0",
-        "16644243327ba53d2a-1"
+        "16644243327ba53d2a-1",
+        "16644243327ba53d2a-0"
       ],
       "settings": {
         "full_width": true,
