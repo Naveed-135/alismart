@@ -111,28 +111,13 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
-        },
-        "collection-2": {
-          "type": "collection",
-          "settings": {
-            "collection": "t-shirt",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
         }
       },
       "block_order": [
         "collection-3",
         "collection_Dz7VBM",
         "collection-1",
-        "collection_4DzUUY",
-        "collection-2"
+        "collection_4DzUUY"
       ],
       "settings": {
         "full_width": true,
