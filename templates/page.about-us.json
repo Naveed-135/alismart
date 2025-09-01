@@ -114,7 +114,7 @@
           "type": "item",
           "settings": {
             "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+            "content": "<p>Orders are processed same day and will be shipped via Royal Mail Tracked 24 service. It will take 1-2 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
           }
         },
         "item_PQbDpm": {
@@ -123,28 +123,12 @@
             "title": "Any question?",
             "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
           }
-        },
-        "item_pzVCHg": {
-          "type": "item",
-          "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
-          }
-        },
-        "item_yqJnhQ": {
-          "type": "item",
-          "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
-          }
         }
       },
       "block_order": [
         "item_8Tb3et",
         "item_Vk676y",
-        "item_PQbDpm",
-        "item_pzVCHg",
-        "item_yqJnhQ"
+        "item_PQbDpm"
       ],
       "name": "FAQ",
       "settings": {
