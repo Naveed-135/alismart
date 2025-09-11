@@ -111,11 +111,11 @@
       "type": "custom-html",
       "custom_css": [
         ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px;}",
-        ".feature {display: flex; align-items: center;}",
+        ".feature {display: flex; align-items: center; gap:20px;}",
         ".feature i {font-size: 24px; margin-bottom: 8px; display: block;}",
         ".feature h4 {font-size: 16px; font-weight: bold; margin: 0px;}",
         ".feature p {font-size: 14px; color: #555; margin: 0;}",
-        "svg {width: 20px; height: 20px;}",
+        "svg {width: 30px; height: 30px;}",
         " /* Responsive */@media (max-width: 768px) {.features {flex-direction: column; text-align: center; }}"
       ],
       "name": "Custom HTML",
