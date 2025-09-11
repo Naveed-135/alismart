@@ -199,7 +199,7 @@ Supported variables
                   -%}
 
                   {% if product_option.values.size > 4 %}
-                    <a href="{{ product.url }}" data-instant class="color-swatch__view-more {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %} text-xxs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
+                    <a href="{{ product.url }}" data-instant class="color-swatch__view-more {% if settings.color_swatch_style == 'round' %}rounded-full e{% endif %} text-xxs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
                   {% endif %}
                 </fieldset>
 
