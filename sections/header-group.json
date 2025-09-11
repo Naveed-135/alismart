@@ -110,7 +110,7 @@
     "custom_html_YTQDCJ": {
       "type": "custom-html",
       "custom_css": [
-        ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px;}",
+        ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px; padding:15px 0px;}",
         ".feature {display: flex; align-items: center; gap: 20px;}",
         ".feature h4 {font-size: 16px; font-weight: bold; margin: 0px;}",
         ".feature p {font-size: 14px; color: #555; margin: 0;}",
