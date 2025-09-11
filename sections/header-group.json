@@ -109,6 +109,7 @@
     },
     "custom_html_YTQDCJ": {
       "type": "custom-html",
+      "disabled": true,
       "custom_css": [
         ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 15px 0px;}",
         ".feature {display: flex; align-items: center; gap: 20px;}",
