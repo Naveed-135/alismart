@@ -115,7 +115,8 @@
         ".feature i {font-size: 24px; margin-bottom: 8px; display: block;}",
         ".feature h4 {font-size: 16px; font-weight: bold; margin: 5px 0;}",
         ".feature p {font-size: 14px; color: #555; margin: 0;}",
-        " /* Responsive */@media (max-width: 768px) {.features {flex-direction: column; text-align: center; }}"
+        "svg{width: 20px; height: 20px}",
+        "/* Responsive */@media (max-width: 768px) {.features {flex-direction: column; text-align: center; }}"
       ],
       "name": "Custom HTML",
       "settings": {
