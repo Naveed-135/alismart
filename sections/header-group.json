@@ -110,12 +110,12 @@
     "custom_html_YTQDCJ": {
       "type": "custom-html",
       "custom_css": [
-        ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px; padding:15px 0px;}",
+        ".features {display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 15px 0px;}",
         ".feature {display: flex; align-items: center; gap: 20px;}",
         ".feature h4 {font-size: 16px; font-weight: bold; margin: 0px;}",
         ".feature p {font-size: 14px; color: #555; margin: 0;}",
         "svg {width: 30px; height: 30px;}",
-        " /* Responsive */@media (max-width: 768px) {.features {flex-direction: column; text-align: center; }}"
+        " /* Responsive */@media (max-width: 768px) {.features {display: none; }}"
       ],
       "name": "Custom HTML",
       "settings": {
