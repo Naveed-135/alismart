@@ -3815,7 +3815,7 @@ tfoot td {
   margin-inline-start: var(--spacing-1-5);
 }
 .border-radius-50{
-  border-radius:50%;
+  border-radius:50% !important;
 }
 .thumbnail-swatch {
   --swatch-size: 60px;
