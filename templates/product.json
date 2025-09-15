@@ -132,6 +132,10 @@
         "buy_buttons",
         "collapsible_text_Daq3QE"
       ],
+      "custom_css": [
+        ".product-info__sku {font-size: 16px;}",
+        "sale-price{font-size: 32px; font-weight: 700;}"
+      ],
       "settings": {
         "full_width": true,
         "show_fixed_add_to_cart": true,
@@ -140,7 +144,7 @@
         "mobile_media_size": "expanded",
         "mobile_carousel_control": "floating_dots",
         "enable_video_autoplay": false,
-        "enable_video_looping": true,
+        "enable_video_looping": false,
         "enable_image_zoom": true,
         "max_image_zoom_level": 3,
         "background": "",

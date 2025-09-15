@@ -18,6 +18,7 @@
     "block_shadow_opacity": 10,
     "block_shadow_vertical_offset": 18,
     "icon_stroke_width": 2,
+    "icon_style": "duo",
     "button_style": "fill",
     "button_hover_effect": "fade",
     "background": "#f0f0f0",
@@ -61,11 +62,6 @@
       "15639742860725253803": {
         "type": "shopify://apps/musbu-wa-chat/blocks/app-embed/267d7a73-494b-4925-ba55-49fe70b0f09e",
         "disabled": false,
-        "settings": {}
-      },
-      "8208493610395315515": {
-        "type": "shopify://apps/dondy-whatsapp-chat-marketing/blocks/app-block/7f5a70cb-e171-4cc7-ac02-e2220203abd6",
-        "disabled": true,
         "settings": {}
       }
     }
