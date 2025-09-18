@@ -134,7 +134,9 @@
       ],
       "custom_css": [
         ".product-info__sku {font-size: 16px;}",
-        "sale-price{font-size: 32px; font-weight: 700;}"
+        "sale-price {font-size: 32px; font-weight: 700;}",
+        ".button--xl {text-transform: uppercase; font-size: 20px;}",
+        ".button-content span{font-size: 20px;}"
       ],
       "settings": {
         "full_width": true,
