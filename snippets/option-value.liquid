@@ -187,7 +187,7 @@
       </{{ option_value_tag }}>
     {%- else -%}
       <{{ option_value_tag }}
-        class="block-swatch {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}"
+        class="block-swatch 1 {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}"
         for="{{ id | escape }}"
         {{ attributes }}
       >
@@ -199,7 +199,7 @@
     {%- assign white_label_list = 'general.label.white' | t | replace: ', ', ',' | downcase | split: ',' -%}
 
     <{{ option_value_tag }}
-      class="block-swatch {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}"
+      class="block-swatch 2 {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}"
       {{ attributes }}
     >
       {%- if show_swatch -%}
