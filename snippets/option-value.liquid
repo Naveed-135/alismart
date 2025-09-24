@@ -120,7 +120,7 @@
     for="{{ id | escape }}"
   {%- else -%}
     {%- assign option_value_tag = 'a' -%}
-    href="{{ option_value.variant.url | default: url }}" 
+    href="{{ option_value.variant.url | default: url }}" {% if hide_if_disabled and disabled and selected == false %}hidden{% endif %}
   {%- endif -%}
 {%- endcapture -%}
 
