@@ -173,7 +173,7 @@
   {%- when 'thumbnail' -%}
     {%- assign image = image | default: variant.featured_media | default: variant.product.featured_media -%}
 
-    {% comment %} {%- if image != blank -%} {% endcomment %}
+    {%- if image != blank -%}
       <{{ option_value_tag }}
         class="thumbnail-swatch border-radius-50 {% if size == 'sm' %}thumbnail-swatch--sm{% endif %} {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %} {% if bordered %}border{% endif %}"
         {{ attributes }}
@@ -185,15 +185,15 @@
           | image_tag: sizes: '60px', widths: '60,120', class: 'object-cover'
         -}}
       </{{ option_value_tag }}>
-    {% comment %} {%- else -%} {% endcomment %}
-      {% comment %} <{{ option_value_tag }}
+    {%- else -%}
+      <{{ option_value_tag }}
         class="block-swatch 1 {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}"
         for="{{ id | escape }}"
         {{ attributes }}
       >
         {{ label | default: value }}
-      </{{ option_value_tag }}> {% endcomment %}
-    {% comment %} {%- endif -%} {% endcomment %}
+      </{{ option_value_tag }}>
+    {%- endif -%}
 
   {%- when 'block' -%}
     {%- assign white_label_list = 'general.label.white' | t | replace: ', ', ',' | downcase | split: ',' -%}
