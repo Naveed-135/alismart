@@ -140,7 +140,8 @@
       "custom_css": [
         ".product-info__sku {font-size: 16px;}",
         "sale-price {font-size: 32px; font-weight: 700;}",
-        ".button--xl {text-transform: uppercase;}"
+        ".button--xl {text-transform: uppercase;}",
+        ".thumbnail-swatch > img {padding:3px;}"
       ],
       "settings": {
         "full_width": true,
@@ -150,7 +151,7 @@
         "mobile_media_size": "expanded",
         "mobile_carousel_control": "floating_dots",
         "enable_video_autoplay": false,
-        "enable_video_looping": false,
+        "enable_video_looping": true,
         "enable_image_zoom": true,
         "max_image_zoom_level": 3,
         "background": "",
@@ -180,6 +181,29 @@
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
+      }
+    },
+    "17586352420addd915": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_PFzrMz": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_PFzrMz"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "faq_xpQND9": {
@@ -251,29 +275,6 @@
         "button_text_color": "",
         "accordion_background": "",
         "accordion_text_color": ""
-      }
-    },
-    "17586352420addd915": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_PFzrMz": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_PFzrMz"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
     }
   },
