@@ -74,6 +74,7 @@
           "type": "collection",
           "settings": {
             "collection": "footwear",
+            "image": "shopify://shop_images/Untitled_design.png",
             "subheading": "",
             "title": "",
             "url": "shopify://collections/footwear",
