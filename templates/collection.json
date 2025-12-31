@@ -20,7 +20,6 @@
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "auto",
-        "image": "{{ section.settings.featured_product.featured_image }}",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
