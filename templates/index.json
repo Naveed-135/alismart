@@ -89,6 +89,7 @@
           "type": "collection",
           "settings": {
             "collection": "gloves",
+            "image": "shopify://shop_images/A756K8R.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -103,6 +104,7 @@
           "type": "collection",
           "settings": {
             "collection": "ppe",
+            "image": "shopify://shop_images/Untitled_design_3.jpg",
             "subheading": "",
             "title": "",
             "url": "shopify://collections/ppe",
