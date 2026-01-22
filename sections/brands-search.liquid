@@ -1,0 +1,43 @@
+<div class="brand-search-wrapper">
+  <input
+    type="text"
+    id="brandSearch"
+    placeholder="Search brands..."
+    onkeyup="filterBrands()"
+  />
+</div>
+
+<style>
+.brand-search-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+#brandSearch {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+</style>
+
+<script>
+function filterBrands() {
+  const input = document.getElementById("brandSearch").value.toLowerCase();
+  const brands = document.querySelectorAll(".brand-item");
+
+  brands.forEach(brand => {
+    brand.style.display = brand.innerText.toLowerCase().includes(input)
+      ? "block"
+      : "none";
+  });
+}
+</script>
+
+{% schema %}
+{
+  "name": "Brands Search Bar",
+  "settings": []
+}
+{% endschema %}
