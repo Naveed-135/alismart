@@ -561,6 +561,7 @@
       "blocks": {
         "ai_gen_block_98b4d6e_FCrbED": {
           "type": "ai_gen_block_98b4d6e",
+          "disabled": true,
           "settings": {
             "card_height_desktop": 500,
             "card_height_tablet": 400,
