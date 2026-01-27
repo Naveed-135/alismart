@@ -15,9 +15,62 @@
       "settings": {
         "content_width": "120ch"
       }
+    },
+    "17695399351bd400a5": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_28837f0_jynxJW": {
+          "type": "ai_gen_block_28837f0",
+          "settings": {
+            "show_header": true,
+            "page_title": "All Brands",
+            "page_description": "Browse our complete collection of brands. Click any letter to jump to brands starting with that letter.",
+            "title_size": 48,
+            "description_size": 16,
+            "header_spacing": 40,
+            "max_width": 1400,
+            "section_padding": 60,
+            "content_spacing": 40,
+            "letter_spacing": 50,
+            "nav_font_size": 14,
+            "nav_spacing": 8,
+            "nav_padding": 20,
+            "nav_border_radius": 12,
+            "nav_link_radius": 8,
+            "nav_background": "#ffffff",
+            "nav_text_color": "#1a1a1a",
+            "nav_hover_bg": "#00a341",
+            "nav_hover_color": "#ffffff",
+            "letter_heading_size": 36,
+            "letter_heading_margin": 20,
+            "letter_heading_color": "#1a1a1a",
+            "letter_border_color": "#e0e0e0",
+            "grid_min_width": 220,
+            "grid_gap": 16,
+            "grid_margin_top": 20,
+            "brand_padding": 20,
+            "brand_border_radius": 12,
+            "brand_font_size": 16,
+            "brand_card_bg": "#ffffff",
+            "brand_border_color": "#e0e0e0",
+            "brand_hover_bg": "#f8f8f8",
+            "brand_text_color": "#1a1a1a",
+            "brand_hover_color": "#00a341",
+            "background_color": "#f0f0f0",
+            "title_color": "#1a1a1a",
+            "text_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_28837f0_jynxJW"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "17695399351bd400a5"
   ]
 }
