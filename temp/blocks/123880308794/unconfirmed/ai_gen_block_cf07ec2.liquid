@@ -1,6 +1,468 @@
+{% doc %}
+  @prompt
+    Create a clean, modern Shopify USP / Trust Bar section displayed in a single horizontal row with 4 columns.
+    
+    Each column should include:
+    
+    A simple line icon on top (minimal, professional style)
+    
+    A bold heading
+    
+    A short supporting description
+    
+    Content for each column:
+    
+    Trusted Service
+    Description: 10,000+ 5 Star Reviews
+    Icon: smile / trust icon
+    
+    Free Delivery*
+    Description: On all orders £75 or more
+    Icon: delivery truck
+    
+    Trade & Wholesale
+    Description: Apply for a Trade Account
+    Icon: checkmark
+    
+    60,000+ Products
+    Description: From Top Professional Brands
+    Icon: return / arrow icon
+    
+    Design requirements:
+    
+    White background
+    
+    Subtle vertical dividers between columns
+    
+    Center-aligned content
+    
+    Responsive for mobile (stack into 2 rows or slider)
+    
+    Clean typography matching a professional ecommerce store
+    
+    Suitable for Shopify theme using Liquid + HTML + CSS (or Tailwind if supported)
+    Generate the full Shopify Liquid + HTML + CSS code for this section.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-trust-bar-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical }}px 0;
+  }
+
+  .ai-trust-bar-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-trust-bar-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .ai-trust-bar-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: {{ block.settings.item_padding }}px;
+    position: relative;
+  }
+
+  .ai-trust-bar-item-{{ ai_gen_id }}:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: {{ block.settings.divider_height }}%;
+    background-color: {{ block.settings.divider_color }};
+    opacity: {{ block.settings.divider_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-trust-bar-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin-bottom: {{ block.settings.icon_spacing }}px;
+    color: {{ block.settings.icon_color }};
+    stroke-width: {{ block.settings.icon_stroke_width }};
+  }
+
+  .ai-trust-bar-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: {{ block.settings.heading_weight }};
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.heading_spacing }}px 0;
+    line-height: 1.2;
+  }
+
+  .ai-trust-bar-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-trust-bar-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: {{ block.settings.mobile_gap }}px 0;
+    }
+
+    .ai-trust-bar-item-{{ ai_gen_id }}:nth-child(2)::after {
+      display: none;
+    }
+
+    .ai-trust-bar-item-{{ ai_gen_id }}:nth-child(3)::after {
+      display: block;
+    }
+
+    .ai-trust-bar-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.9 }}px;
+      height: {{ block.settings.icon_size | times: 0.9 }}px;
+    }
+
+    .ai-trust-bar-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.9 }}px;
+    }
+
+    .ai-trust-bar-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-trust-bar-item-{{ ai_gen_id }} {
+      padding: {{ block.settings.item_padding | times: 0.8 }}px;
+    }
+
+    .ai-trust-bar-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.8 }}px;
+      height: {{ block.settings.icon_size | times: 0.8 }}px;
+      margin-bottom: {{ block.settings.icon_spacing | times: 0.8 }}px;
+    }
+
+    .ai-trust-bar-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+      margin-bottom: {{ block.settings.heading_spacing | times: 0.8 }}px;
+    }
+
+    .ai-trust-bar-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-trust-bar-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-trust-bar-container-{{ ai_gen_id }}">
+    <div class="ai-trust-bar-grid-{{ ai_gen_id }}">
+      <div class="ai-trust-bar-item-{{ ai_gen_id }}">
+        <div class="ai-trust-bar-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <h3 class="ai-trust-bar-heading-{{ ai_gen_id }}">{{ block.settings.item_1_heading }}</h3>
+        <p class="ai-trust-bar-description-{{ ai_gen_id }}">{{ block.settings.item_1_description }}</p>
+      </div>
+
+      <div class="ai-trust-bar-item-{{ ai_gen_id }}">
+        <div class="ai-trust-bar-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <h3 class="ai-trust-bar-heading-{{ ai_gen_id }}">{{ block.settings.item_2_heading }}</h3>
+        <p class="ai-trust-bar-description-{{ ai_gen_id }}">{{ block.settings.item_2_description }}</p>
+      </div>
+
+      <div class="ai-trust-bar-item-{{ ai_gen_id }}">
+        <div class="ai-trust-bar-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="ai-trust-bar-heading-{{ ai_gen_id }}">{{ block.settings.item_3_heading }}</h3>
+        <p class="ai-trust-bar-description-{{ ai_gen_id }}">{{ block.settings.item_3_description }}</p>
+      </div>
+
+      <div class="ai-trust-bar-item-{{ ai_gen_id }}">
+        <div class="ai-trust-bar-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="ai-trust-bar-heading-{{ ai_gen_id }}">{{ block.settings.item_4_heading }}</h3>
+        <p class="ai-trust-bar-description-{{ ai_gen_id }}">{{ block.settings.item_4_description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Trust bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Item padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile row gap",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "icon_stroke_width",
+      "min": 1,
+      "max": 3,
+      "step": 0.5,
+      "label": "Stroke width",
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Spacing below icon",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "min": 400,
+      "max": 800,
+      "step": 100,
+      "label": "Heading weight",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 2,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "label": "Spacing below heading",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Divider"
+    },
+    {
+      "type": "range",
+      "id": "divider_height",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Height",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "divider_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Opacity",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "text",
+      "id": "item_1_heading",
+      "label": "Heading",
+      "default": "Trusted Service"
+    },
+    {
+      "type": "text",
+      "id": "item_1_description",
+      "label": "Description",
+      "default": "10,000+ 5 Star Reviews"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "text",
+      "id": "item_2_heading",
+      "label": "Heading",
+      "default": "Free Delivery*"
+    },
+    {
+      "type": "text",
+      "id": "item_2_description",
+      "label": "Description",
+      "default": "On all orders £75 or more"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "text",
+      "id": "item_3_heading",
+      "label": "Heading",
+      "default": "Trade & Wholesale"
+    },
+    {
+      "type": "text",
+      "id": "item_3_description",
+      "label": "Description",
+      "default": "Apply for a Trade Account"
+    },
+    {
+      "type": "header",
+      "content": "Item 4"
+    },
+    {
+      "type": "text",
+      "id": "item_4_heading",
+      "label": "Heading",
+      "default": "60,000+ Products"
+    },
+    {
+      "type": "text",
+      "id": "item_4_description",
+      "label": "Description",
+      "default": "From Top Professional Brands"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar"
+    }
+  ]
+}
 {% endschema %}
