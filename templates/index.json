@@ -505,6 +505,56 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "1769541782e8c2b0b0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fb41234_X6FmzT": {
+          "type": "ai_gen_block_fb41234",
+          "settings": {
+            "heading": "Shop by Brand",
+            "subheading": "Explore our trusted brands",
+            "heading_alignment": "center",
+            "heading_size": 36,
+            "subheading_size": 16,
+            "heading_spacing": 40,
+            "container_width": 1400,
+            "logos_per_row_desktop": 6,
+            "logos_per_row_tablet": 4,
+            "logos_per_row_mobile": 2,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "logo_max_height": 80,
+            "logo_min_height": 120,
+            "logo_padding": 20,
+            "logo_border_radius": 12,
+            "hover_effect": "scale(1.05)",
+            "hover_opacity": 85,
+            "background_color": "#ffffff",
+            "heading_color": "#1a1a1a",
+            "subheading_color": "#666666",
+            "logo_background": "#f9f9f9",
+            "brand_1_link": "",
+            "brand_2_link": "",
+            "brand_3_link": "",
+            "brand_4_link": "",
+            "brand_5_link": "",
+            "brand_6_link": "",
+            "brand_7_link": "",
+            "brand_8_link": "",
+            "brand_9_link": "",
+            "brand_10_link": "",
+            "brand_11_link": "",
+            "brand_12_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fb41234_X6FmzT"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -514,6 +564,7 @@
     "logo_list_bwQ7tF",
     "media-grid",
     "press",
-    "faq"
+    "faq",
+    "1769541782e8c2b0b0"
   ]
 }
