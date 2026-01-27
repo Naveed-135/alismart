@@ -1,6 +1,703 @@
+{% doc %}
+  @prompt
+    Create a modern “All Brands” logo section for a Shopify store, similar to the GS Workwear brand logos section.
+    
+    The section should display brand logos (images) in a clean, horizontal or grid-based layout, with each logo clickable and linking to that brand’s product listing page.
+    
+    Section structure & features:
+    
+    Display brand logos/images instead of text-only names
+    
+    Each logo should be clickable and redirect to the brand’s collection or vendor page
+    
+    Logos should be evenly spaced and aligned in a clean grid or row
+    
+    Support multiple rows if many brands exist
+    
+    Fully responsive (desktop, tablet, mobile)
+    
+    Logos scale proportionally and remain sharp
+    
+    Image handling:
+    
+    Allow brand logos to be uploaded via Shopify theme customizer
+    
+    Support common formats (PNG, SVG, JPG)
+    
+    Maintain consistent logo height while preserving aspect ratio
+    
+    Data & functionality:
+    
+    Each logo can be mapped to a Shopify vendor or collection
+    
+    Clicking a logo opens /collections/vendors?q=BrandName or a selected collection
+    
+    Easy to add, remove, or reorder brands
+    
+    Design style:
+    
+    Clean, minimal, professional ecommerce look
+    
+    White background
+    
+    Subtle hover effect on logos (opacity or scale)
+    
+    No heavy borders or shadows
+    
+    Technical requirements:
+    
+    Built using Shopify Liquid, HTML, and CSS
+    
+    Implemented as a custom Shopify section
+    
+    All content (logo image + link) editable from the Theme Editor
+    
+    No third-party apps required
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-brands-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding_top }}px 20px {{ block.settings.section_padding_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-brands-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-brands-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.heading_alignment }};
+    margin-bottom: {{ block.settings.heading_spacing }}px;
+  }
+
+  .ai-brands-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 12px 0;
+    font-weight: 700;
+  }
+
+  .ai-brands-subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.subheading_color }};
+    margin: 0;
+  }
+
+  .ai-brands-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.logos_per_row_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    align-items: center;
+  }
+
+  .ai-brand-item-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.logo_padding }}px;
+    background-color: {{ block.settings.logo_background }};
+    border-radius: {{ block.settings.logo_border_radius }}px;
+    transition: all 0.3s ease;
+    min-height: {{ block.settings.logo_min_height }}px;
+  }
+
+  .ai-brand-item-{{ ai_gen_id }}:hover {
+    transform: {{ block.settings.hover_effect }};
+    opacity: {{ block.settings.hover_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-brand-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .ai-brand-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: {{ block.settings.logo_max_height }}px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .ai-brand-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.logo_border_radius }}px;
+    min-height: {{ block.settings.logo_min_height }}px;
+  }
+
+  .ai-brand-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-brand-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.logos_per_row_tablet }}, 1fr);
+    }
+
+    .ai-brands-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-brands-subheading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheading_size }}px * 0.9);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-brands-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding_top | times: 0.6 }}px 16px {{ block.settings.section_padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.logos_per_row_mobile }}, 1fr);
+      gap: {{ block.settings.grid_gap | times: 0.7 }}px;
+    }
+
+    .ai-brand-item-{{ ai_gen_id }} {
+      padding: {{ block.settings.logo_padding | times: 0.7 }}px;
+      min-height: {{ block.settings.logo_min_height | times: 0.8 }}px;
+    }
+
+    .ai-brand-image-{{ ai_gen_id }} {
+      max-height: {{ block.settings.logo_max_height | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<brand-logos-{{ ai_gen_id }} class="ai-brands-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-brands-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank or block.settings.subheading != blank %}
+      <div class="ai-brands-header-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-brands-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p class="ai-brands-subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-brands-grid-{{ ai_gen_id }}">
+      {% for i in (1..12) %}
+        {% liquid
+          assign brand_image_key = 'brand_' | append: i | append: '_image'
+          assign brand_link_key = 'brand_' | append: i | append: '_link'
+          assign brand_image = block.settings[brand_image_key]
+          assign brand_link = block.settings[brand_link_key]
+        %}
+
+        {% if brand_image != blank %}
+          <div class="ai-brand-item-{{ ai_gen_id }}">
+            {% if brand_link != blank %}
+              <a href="{{ brand_link }}" class="ai-brand-link-{{ ai_gen_id }}" aria-label="View brand {{ i }}">
+                <img
+                  src="{{ brand_image | image_url: width: 400 }}"
+                  alt="{{ brand_image.alt | escape }}"
+                  class="ai-brand-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="{{ brand_image.width }}"
+                  height="{{ brand_image.height }}"
+                >
+              </a>
+            {% else %}
+              <div class="ai-brand-link-{{ ai_gen_id }}">
+                <img
+                  src="{{ brand_image | image_url: width: 400 }}"
+                  alt="{{ brand_image.alt | escape }}"
+                  class="ai-brand-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="{{ brand_image.width }}"
+                  height="{{ brand_image.height }}"
+                >
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</brand-logos-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class BrandLogos{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupAccessibility();
+      }
+
+      setupAccessibility() {
+        const links = this.querySelectorAll('.ai-brand-link-{{ ai_gen_id }}');
+        links.forEach((link, index) => {
+          if (link.tagName === 'A' && !link.hasAttribute('aria-label')) {
+            link.setAttribute('aria-label', `View brand ${index + 1}`);
+          }
+        });
+      }
+    }
+
+    customElements.define('brand-logos-{{ ai_gen_id }}', BrandLogos{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "All brands",
+  "tag": null,
+  "class": "ai-brands-block",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Brand"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore our trusted brands"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacing below heading",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "logos_per_row_desktop",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "label": "Logos per row (desktop)",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "logos_per_row_tablet",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Logos per row (tablet)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "logos_per_row_mobile",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Logos per row (mobile)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between logos",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Logo style"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_height",
+      "min": 40,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Maximum logo height",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "logo_min_height",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Minimum container height",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "logo_padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "logo_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Logo container corner radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Hover effect"
+    },
+    {
+      "type": "select",
+      "id": "hover_effect",
+      "label": "Hover transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "scale(1.05)",
+          "label": "Scale up"
+        },
+        {
+          "value": "scale(0.95)",
+          "label": "Scale down"
+        },
+        {
+          "value": "translateY(-4px)",
+          "label": "Lift up"
+        }
+      ],
+      "default": "scale(1.05)"
+    },
+    {
+      "type": "range",
+      "id": "hover_opacity",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Hover opacity",
+      "default": 85
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "logo_background",
+      "label": "Logo container background",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "header",
+      "content": "Brand 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_1_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_2_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_3_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_3_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_4_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_4_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_5_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_5_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_6_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_6_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_7_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_7_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_8_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_8_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_9_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_9_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_10_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_10_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 11"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_11_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_11_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Brand 12"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_12_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "brand_12_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "All brands"
+    }
+  ]
+}
 {% endschema %}
