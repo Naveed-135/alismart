@@ -1,6 +1,587 @@
+{% doc %}
+  @prompt
+    Create a modern “All Brands” page for a Shopify store, similar to the GS Workwear All Brands page.
+    
+    The page should display all brand names (vendors) in a clean, alphabetical layout with clickable links that take customers to each brand’s product listing.
+    
+    Page structure & features:
+    
+    An A–Z alphabetical navigation bar at the top so users can quickly jump to brands by letter
+    
+    Each letter (A–Z) displayed as a bold heading
+    
+    Brand names listed under their respective letter
+    
+    Each brand name should be clickable and link to the brand’s product collection
+    
+    Display brands in a neat grid or list layout with proper spacing
+    
+    Fully responsive and mobile-friendly
+    
+    Data & functionality:
+    
+    Automatically pull brand names from Shopify vendors (shop.vendors)
+    
+    Sort brands alphabetically
+    
+    Hide letters that do not have any brands
+    
+    SEO-friendly structure using proper heading tags
+    
+    Design style:
+    
+    Clean, minimal, professional ecommerce layout
+    
+    White background
+    
+    Clear typography
+    
+    Easy-to-scan alphabetical sections
+    
+    Technical requirement:
+    
+    Suitable for Shopify using Liquid + HTML + CSS
+    
+    Easy to add as a custom page or section
+    “Generate the complete Shopify Liquid, HTML, and CSS code for this page.”
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-brands-page-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-brands-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-brands-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+
+  .ai-brands-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-brands-az-nav-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: {{ block.settings.nav_background }};
+    border-radius: {{ block.settings.nav_border_radius }}px;
+  }
+
+  .ai-brands-az-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.nav_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.nav_item_radius }}px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-brands-az-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.nav_hover_bg }};
+    color: {{ block.settings.nav_hover_text }};
+  }
+
+  .ai-brands-az-link-{{ ai_gen_id }}.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .ai-brands-letter-section-{{ ai_gen_id }} {
+    margin-bottom: 50px;
+  }
+
+  .ai-brands-letter-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.letter_heading_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.letter_heading_color }};
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid {{ block.settings.divider_color }};
+  }
+
+  .ai-brands-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax({{ block.settings.min_column_width }}px, 1fr));
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-brands-item-{{ ai_gen_id }} {
+    display: block;
+    padding: {{ block.settings.item_padding }}px;
+    background-color: {{ block.settings.item_background }};
+    border-radius: {{ block.settings.item_border_radius }}px;
+    text-decoration: none;
+    color: {{ block.settings.brand_text_color }};
+    font-size: {{ block.settings.brand_text_size }}px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid {{ block.settings.item_border_color }};
+  }
+
+  .ai-brands-item-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.item_hover_bg }};
+    color: {{ block.settings.item_hover_text }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-brands-empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: {{ block.settings.text_color }};
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-brands-page-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 16px;
+    }
+
+    .ai-brands-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.7 }}px;
+    }
+
+    .ai-brands-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+
+    .ai-brands-az-nav-{{ ai_gen_id }} {
+      gap: 6px;
+      padding: 16px;
+    }
+
+    .ai-brands-az-link-{{ ai_gen_id }} {
+      min-width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    .ai-brands-letter-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.letter_heading_size | times: 0.8 }}px;
+    }
+
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: {{ block.settings.grid_gap | times: 0.7 }}px;
+    }
+
+    .ai-brands-item-{{ ai_gen_id }} {
+      padding: {{ block.settings.item_padding | times: 0.8 }}px;
+      font-size: {{ block.settings.brand_text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<all-brands-{{ ai_gen_id }} class="ai-brands-page-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_header %}
+    <div class="ai-brands-header-{{ ai_gen_id }}">
+      {% if block.settings.page_title != blank %}
+        <h1 class="ai-brands-title-{{ ai_gen_id }}">{{ block.settings.page_title }}</h1>
+      {% endif %}
+      {% if block.settings.page_description != blank %}
+        <p class="ai-brands-description-{{ ai_gen_id }}">{{ block.settings.page_description }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% liquid
+    assign all_vendors = shop.vendors | sort_natural
+    assign vendors_by_letter = '' | split: ''
+    
+    for i in (0..25)
+      assign letter_code = i | plus: 65
+      assign letter = letter_code | modulo: 256 | split: '' | first
+      assign vendors_by_letter = vendors_by_letter | concat: letter | split: ','
+    endfor
+    
+    assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ','
+    assign vendors_map = ''
+  %}
+
+  {% for vendor in all_vendors %}
+    {% assign first_char = vendor | slice: 0 | upcase %}
+    {% assign vendors_map = vendors_map | append: first_char | append: '|' | append: vendor | append: '||' %}
+  {% endfor %}
+
+  <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation">
+    {% for letter in alphabet %}
+      {% assign has_vendors = false %}
+      {% if vendors_map contains letter %}
+        {% assign has_vendors = true %}
+      {% endif %}
+      
+      {% if has_vendors %}
+        <a href="#letter-{{ letter | downcase }}-{{ ai_gen_id }}" class="ai-brands-az-link-{{ ai_gen_id }}">{{ letter }}</a>
+      {% else %}
+        <span class="ai-brands-az-link-{{ ai_gen_id }} disabled">{{ letter }}</span>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  {% if all_vendors.size > 0 %}
+    {% for letter in alphabet %}
+      {% assign letter_vendors = '' | split: '' %}
+      
+      {% for vendor in all_vendors %}
+        {% assign first_char = vendor | slice: 0 | upcase %}
+        {% if first_char == letter %}
+          {% assign letter_vendors = letter_vendors | push: vendor %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if letter_vendors.size > 0 %}
+        <section id="letter-{{ letter | downcase }}-{{ ai_gen_id }}" class="ai-brands-letter-section-{{ ai_gen_id }}">
+          <h2 class="ai-brands-letter-heading-{{ ai_gen_id }}">{{ letter }}</h2>
+          <div class="ai-brands-grid-{{ ai_gen_id }}">
+            {% for vendor in letter_vendors %}
+              <a 
+                href="{{ routes.collections_url }}/vendors?q={{ vendor | url_encode }}" 
+                class="ai-brands-item-{{ ai_gen_id }}"
+              >
+                {{ vendor }}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <div class="ai-brands-empty-{{ ai_gen_id }}">
+      <p>No brands available at the moment.</p>
+    </div>
+  {% endif %}
+</all-brands-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AllBrands{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupSmoothScroll();
+      }
+
+      setupSmoothScroll() {
+        const links = this.querySelectorAll('.ai-brands-az-link-{{ ai_gen_id }}[href^="#"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              const offset = 100;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - offset;
+              
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      }
+    }
+
+    customElements.define('all-brands-{{ ai_gen_id }}', AllBrands{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "All brands",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Title",
+      "default": "All Brands"
+    },
+    {
+      "type": "text",
+      "id": "page_description",
+      "label": "Description",
+      "default": "Browse our complete collection of brands"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "A-Z navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_background",
+      "label": "Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_bg",
+      "label": "Hover background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "nav_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "nav_item_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Item border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Letter sections"
+    },
+    {
+      "type": "range",
+      "id": "letter_heading_size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Letter heading size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "letter_heading_color",
+      "label": "Letter heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Brand grid"
+    },
+    {
+      "type": "range",
+      "id": "min_column_width",
+      "min": 150,
+      "max": 350,
+      "step": 10,
+      "unit": "px",
+      "label": "Minimum column width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Item padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Item border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Brand items"
+    },
+    {
+      "type": "range",
+      "id": "brand_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "item_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "brand_text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "item_hover_bg",
+      "label": "Hover background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "item_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "All brands"
+    }
+  ]
+}
 {% endschema %}
