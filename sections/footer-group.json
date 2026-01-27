@@ -11,6 +11,47 @@
   "type": "footer",
   "name": "Footer group",
   "sections": {
+    "17695386940bf7a0b1": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cf07ec2_9Qwjw3": {
+          "type": "ai_gen_block_cf07ec2",
+          "settings": {
+            "container_width": 1400,
+            "padding_vertical": 40,
+            "item_padding": 20,
+            "mobile_gap": 30,
+            "background_color": "#ffffff",
+            "icon_color": "#1a1a1a",
+            "heading_color": "#1a1a1a",
+            "description_color": "#666666",
+            "divider_color": "#e0e0e0",
+            "icon_size": 32,
+            "icon_stroke_width": 1.5,
+            "icon_spacing": 12,
+            "heading_size": 16,
+            "heading_weight": 700,
+            "heading_spacing": 6,
+            "description_size": 13,
+            "divider_height": 60,
+            "divider_opacity": 30,
+            "item_1_heading": "Trusted Service",
+            "item_1_description": "10,000+ 5 Star Reviews",
+            "item_2_heading": "Free Delivery*",
+            "item_2_description": "On all orders £75 or more",
+            "item_3_heading": "Trade & Wholesale",
+            "item_3_description": "Apply for a Trade Account",
+            "item_4_heading": "60,000+ Products",
+            "item_4_description": "From Top Professional Brands"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cf07ec2_9Qwjw3"
+      ],
+      "settings": {}
+    },
     "newsletter_DehRjp": {
       "type": "newsletter",
       "name": "Newsletter",
@@ -93,6 +134,7 @@
     }
   },
   "order": [
+    "17695386940bf7a0b1",
     "newsletter_DehRjp",
     "footer"
   ]
