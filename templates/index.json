@@ -102,6 +102,63 @@
       ],
       "settings": {}
     },
+    "1769542658a344d8a6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_98b4d6e_FCrbED": {
+          "type": "ai_gen_block_98b4d6e",
+          "settings": {
+            "card_height_desktop": 500,
+            "card_height_tablet": 400,
+            "card_height_mobile": 350,
+            "gap_desktop": 16,
+            "gap_tablet": 12,
+            "gap_mobile": 12,
+            "columns_tablet": "2",
+            "columns_mobile": "1",
+            "card_border_radius": 24,
+            "content_vertical_alignment": "center",
+            "content_horizontal_alignment": "center",
+            "text_alignment": "center",
+            "content_padding": 40,
+            "overlay_opacity_top": 20,
+            "overlay_opacity_bottom": 60,
+            "text_color": "#ffffff",
+            "label_font_size": 12,
+            "heading_font_size": 36,
+            "heading_spacing": 20,
+            "button_background": "#ffffff",
+            "button_text_color": "#1a1a1a",
+            "button_hover_background": "#f0f0f0",
+            "button_hover_text_color": "#1a1a1a",
+            "button_font_size": 14,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 32,
+            "button_border_radius": 60,
+            "image_1": "shopify://shop_images/Helly_Hansen_moble_banner.png",
+            "label_1": "Helly Hansen",
+            "heading_1": "Save Today",
+            "button_text_1": "Shop Now",
+            "button_link_1": "",
+            "image_2": "shopify://shop_images/Women_s_wear.png",
+            "label_2": "Workwear For All",
+            "heading_2": "Women's Range",
+            "button_text_2": "Shop Now",
+            "button_link_2": "",
+            "image_3": "shopify://shop_images/trade-account-thumnail.png",
+            "label_3": "Open A Trade Account",
+            "heading_3": "",
+            "button_text_3": "Apply Now",
+            "button_link_3": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_98b4d6e_FCrbED"
+      ],
+      "settings": {}
+    },
     "featured_collection_La79zx": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -473,72 +530,17 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
-    },
-    "1769542658a344d8a6": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_98b4d6e_FCrbED": {
-          "type": "ai_gen_block_98b4d6e",
-          "disabled": true,
-          "settings": {
-            "card_height_desktop": 500,
-            "card_height_tablet": 400,
-            "card_height_mobile": 350,
-            "gap_desktop": 16,
-            "gap_tablet": 12,
-            "gap_mobile": 12,
-            "columns_tablet": "2",
-            "columns_mobile": "1",
-            "card_border_radius": 24,
-            "content_vertical_alignment": "center",
-            "content_horizontal_alignment": "center",
-            "text_alignment": "center",
-            "content_padding": 40,
-            "overlay_opacity_top": 20,
-            "overlay_opacity_bottom": 60,
-            "text_color": "#ffffff",
-            "label_font_size": 12,
-            "heading_font_size": 36,
-            "heading_spacing": 20,
-            "button_background": "#ffffff",
-            "button_text_color": "#1a1a1a",
-            "button_hover_background": "#f0f0f0",
-            "button_hover_text_color": "#1a1a1a",
-            "button_font_size": 14,
-            "button_padding_vertical": 12,
-            "button_padding_horizontal": 32,
-            "button_border_radius": 60,
-            "label_1": "Helly Hansen",
-            "heading_1": "Save Today",
-            "button_text_1": "Shop Now",
-            "button_link_1": "",
-            "label_2": "Workwear For All",
-            "heading_2": "Women's Range",
-            "button_text_2": "Shop Now",
-            "button_link_2": "",
-            "label_3": "Open A Trade Account",
-            "heading_3": "",
-            "button_text_3": "Apply Now",
-            "button_link_3": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_98b4d6e_FCrbED"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "image_with_text_overlay_c7WR3N",
     "1769541782e8c2b0b0",
+    "1769542658a344d8a6",
     "featured_collection_La79zx",
     "featured-collection",
     "logo_list_bwQ7tF",
     "media-grid",
     "press",
-    "faq",
-    "1769542658a344d8a6"
+    "faq"
   ]
 }
