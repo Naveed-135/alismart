@@ -246,7 +246,7 @@
     }
   }
 {% endstyle %}
-
+<div class="section">
 <promo-banner-{{ ai_gen_id }} class="ai-promo-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-promo-banner__container-{{ ai_gen_id }}">
     {% for i in (1..3) %}
@@ -317,7 +317,7 @@
     {% endfor %}
   </div>
 </promo-banner-{{ ai_gen_id }}>
-
+</div>
 <script>
   (function() {
     class PromoBanner{{ ai_gen_id }} extends HTMLElement {
