@@ -1,6 +1,813 @@
+{% doc %}
+  @prompt
+    Create a modern “All Brands” page for a Shopify store, similar to the GS Workwear All Brands page.
+    
+    The page should display all brand names (vendors) in a clean, alphabetical layout with clickable links that take customers to each brand’s product listing.
+    
+    🔍 Search Functionality (IMPORTANT)
+    
+    Add a search bar at the top of the page
+    
+    The search bar should allow users to search brands by name
+    
+    As the user types, matching brand names should be shown
+    
+    Search should work with both brand name text and metadata
+    
+    📌 Page Structure & Features
+    
+    An A–Z alphabetical navigation bar at the top
+    
+    Clicking a letter scrolls to that letter’s section
+    
+    Each letter (A–Z) displayed as a bold heading
+    
+    Only show letters that have brands (hide empty letters)
+    
+    Brand names listed under their respective letter
+    
+    Each brand should be:
+    
+    Clickable
+    
+    Linked to its brand product collection
+    
+    Display brands in a clean grid or list layout with proper spacing
+    
+    Fully responsive and mobile-friendly
+    
+    🧠 Data & Functionality
+    
+    Automatically fetch brand names from Shopify vendors using shop.vendors
+    
+    Sort all brands alphabetically (A–Z)
+    
+    Each brand should support metafields, including:
+    
+    Brand name
+    
+    Brand link
+    
+    Brand image / logo (optional)
+    
+    If a brand image metafield exists, display the image above or beside the brand name
+    
+    If no image exists, show brand name as text only
+    
+    🎨 Design Style
+    
+    Clean, minimal, professional ecommerce layout
+    
+    White background
+    
+    Clear and readable typography
+    
+    Easy-to-scan alphabetical sections
+    
+    Subtle hover effects on brand links
+    
+    ⚙️ Technical Requirements
+    
+    Built specifically for Shopify
+    
+    Use Liquid + HTML + CSS
+    
+    Can be added as:
+    
+    A custom page template
+    
+    OR a Shopify section
+    
+    SEO-friendly structure using proper heading tags (h1, h2)
+    
+    Easy to maintain and auto-update when new brands are added
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-brands-page-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-brands-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-brands-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-brands-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 16px;
+    font-weight: 700;
+  }
+
+  .ai-brands-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-brands-search-wrapper-{{ ai_gen_id }} {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  .ai-brands-search-input-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    border: 2px solid {{ block.settings.search_border_color }};
+    border-radius: {{ block.settings.search_border_radius }}px;
+    background-color: {{ block.settings.search_background }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-brands-search-input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.search_focus_color }};
+  }
+
+  .ai-brands-search-icon-{{ ai_gen_id }} {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: {{ block.settings.text_color }};
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .ai-brands-alphabet-nav-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: {{ block.settings.nav_background }};
+    border-radius: {{ block.settings.nav_border_radius }}px;
+  }
+
+  .ai-brands-alphabet-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.nav_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.nav_item_radius }}px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-brands-alphabet-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.nav_hover_bg }};
+    color: {{ block.settings.nav_hover_text }};
+  }
+
+  .ai-brands-alphabet-link-{{ ai_gen_id }}.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .ai-brands-section-{{ ai_gen_id }} {
+    margin-bottom: 50px;
+  }
+
+  .ai-brands-section-{{ ai_gen_id }}.hidden {
+    display: none;
+  }
+
+  .ai-brands-letter-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.letter_heading_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.letter_heading_color }};
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid {{ block.settings.letter_border_color }};
+  }
+
+  .ai-brands-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax({{ block.settings.min_card_width }}px, 1fr));
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-brands-card-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.card_padding }}px;
+    background-color: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-height: 120px;
+  }
+
+  .ai-brands-card-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.card_hover_bg }};
+    border-color: {{ block.settings.card_hover_border }};
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-brands-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.logo_max_width }}px;
+    height: auto;
+    margin-bottom: 12px;
+    object-fit: contain;
+  }
+
+  .ai-brands-card-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.brand_name_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.brand_name_color }};
+    text-align: center;
+    margin: 0;
+  }
+
+  .ai-brands-card-{{ ai_gen_id }}:hover .ai-brands-card-name-{{ ai_gen_id }} {
+    color: {{ block.settings.brand_name_hover_color }};
+  }
+
+  .ai-brands-no-results-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 18px;
+    color: {{ block.settings.text_color }};
+    display: none;
+  }
+
+  .ai-brands-no-results-{{ ai_gen_id }}.visible {
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-brands-page-{{ ai_gen_id }} {
+      padding: 30px 16px;
+    }
+
+    .ai-brands-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.7);
+    }
+
+    .ai-brands-subtitle-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subtitle_size }}px * 0.9);
+    }
+
+    .ai-brands-alphabet-nav-{{ ai_gen_id }} {
+      gap: 6px;
+      padding: 16px;
+    }
+
+    .ai-brands-alphabet-link-{{ ai_gen_id }} {
+      min-width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .ai-brands-letter-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.letter_heading_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<all-brands-{{ ai_gen_id }} class="ai-brands-page-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-brands-container-{{ ai_gen_id }}">
+    <div class="ai-brands-header-{{ ai_gen_id }}">
+      {% if block.settings.page_title != blank %}
+        <h1 class="ai-brands-title-{{ ai_gen_id }}">{{ block.settings.page_title }}</h1>
+      {% endif %}
+      {% if block.settings.page_subtitle != blank %}
+        <p class="ai-brands-subtitle-{{ ai_gen_id }}">{{ block.settings.page_subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {% if block.settings.show_search %}
+      <div class="ai-brands-search-wrapper-{{ ai_gen_id }}">
+        <input
+          type="text"
+          class="ai-brands-search-input-{{ ai_gen_id }}"
+          placeholder="{{ block.settings.search_placeholder }}"
+          aria-label="Search brands"
+          data-search-input
+        >
+        <svg class="ai-brands-search-icon-{{ ai_gen_id }}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </div>
+    {% endif %}
+
+    {% assign all_vendors = shop.vendors | sort %}
+    {% assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' %}
+
+    <nav class="ai-brands-alphabet-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation">
+      {% for letter in alphabet %}
+        {% assign has_brands = false %}
+        {% for vendor in all_vendors %}
+          {% assign first_char = vendor | slice: 0 | upcase %}
+          {% if first_char == letter %}
+            {% assign has_brands = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if has_brands %}
+          <a href="#letter-{{ letter | downcase }}-{{ ai_gen_id }}" class="ai-brands-alphabet-link-{{ ai_gen_id }}" data-letter="{{ letter }}">
+            {{ letter }}
+          </a>
+        {% else %}
+          <span class="ai-brands-alphabet-link-{{ ai_gen_id }} disabled" data-letter="{{ letter }}">
+            {{ letter }}
+          </span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    <div class="ai-brands-content-{{ ai_gen_id }}" data-brands-content>
+      {% for letter in alphabet %}
+        {% assign letter_vendors = '' | split: '' %}
+        
+        {% for vendor in all_vendors %}
+          {% assign first_char = vendor | slice: 0 | upcase %}
+          {% if first_char == letter %}
+            {% assign letter_vendors = letter_vendors | push: vendor %}
+          {% endif %}
+        {% endfor %}
+
+        {% if letter_vendors.size > 0 %}
+          <div class="ai-brands-section-{{ ai_gen_id }}" id="letter-{{ letter | downcase }}-{{ ai_gen_id }}" data-letter-section="{{ letter }}">
+            <h2 class="ai-brands-letter-heading-{{ ai_gen_id }}">{{ letter }}</h2>
+            <div class="ai-brands-grid-{{ ai_gen_id }}">
+              {% for vendor in letter_vendors %}
+                {% assign vendor_handle = vendor | handle %}
+                {% assign vendor_url = '/collections/vendors?q=' | append: vendor %}
+                
+                <a 
+                  href="{{ vendor_url }}" 
+                  class="ai-brands-card-{{ ai_gen_id }}"
+                  data-brand-name="{{ vendor | downcase }}"
+                >
+                  {% if block.settings.show_brand_logos %}
+                    {% assign vendor_metafield_key = vendor | handle %}
+                    {% assign brand_logo = shop.metafields.brands[vendor_metafield_key].logo %}
+                    
+                    {% if brand_logo %}
+                      <img 
+                        src="{{ brand_logo | image_url: width: 300 }}" 
+                        alt="{{ vendor }}" 
+                        class="ai-brands-card-image-{{ ai_gen_id }}"
+                        loading="lazy"
+                        width="300"
+                        height="auto"
+                      >
+                    {% endif %}
+                  {% endif %}
+                  
+                  <h3 class="ai-brands-card-name-{{ ai_gen_id }}">{{ vendor }}</h3>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="ai-brands-no-results-{{ ai_gen_id }}" data-no-results>
+      {{ block.settings.no_results_text }}
+    </div>
+  </div>
+</all-brands-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AllBrands{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.searchInput = this.querySelector('[data-search-input]');
+        this.brandCards = this.querySelectorAll('[data-brand-name]');
+        this.letterSections = this.querySelectorAll('[data-letter-section]');
+        this.noResults = this.querySelector('[data-no-results]');
+        this.alphabetLinks = this.querySelectorAll('[data-letter]');
+      }
+
+      connectedCallback() {
+        if (this.searchInput) {
+          this.searchInput.addEventListener('input', this.handleSearch.bind(this));
+        }
+
+        this.alphabetLinks.forEach(link => {
+          link.addEventListener('click', this.handleAlphabetClick.bind(this));
+        });
+      }
+
+      handleSearch(event) {
+        const searchTerm = event.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        if (searchTerm === '') {
+          this.brandCards.forEach(card => {
+            card.style.display = '';
+          });
+          this.letterSections.forEach(section => {
+            section.classList.remove('hidden');
+          });
+          this.noResults.classList.remove('visible');
+          return;
+        }
+
+        this.brandCards.forEach(card => {
+          const brandName = card.getAttribute('data-brand-name');
+          if (brandName.includes(searchTerm)) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        this.letterSections.forEach(section => {
+          const visibleCards = section.querySelectorAll('[data-brand-name]:not([style*="display: none"])');
+          if (visibleCards.length === 0) {
+            section.classList.add('hidden');
+          } else {
+            section.classList.remove('hidden');
+          }
+        });
+
+        if (visibleCount === 0) {
+          this.noResults.classList.add('visible');
+        } else {
+          this.noResults.classList.remove('visible');
+        }
+      }
+
+      handleAlphabetClick(event) {
+        event.preventDefault();
+        const targetId = event.target.getAttribute('href');
+        if (targetId) {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const offset = 100;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+    }
+
+    customElements.define('all-brands-{{ ai_gen_id }}', AllBrands{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "All brands",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page content"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title",
+      "default": "All Brands"
+    },
+    {
+      "type": "text",
+      "id": "page_subtitle",
+      "label": "Subtitle",
+      "default": "Browse our complete collection of brands"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1400
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search brands..."
+    },
+    {
+      "type": "text",
+      "id": "no_results_text",
+      "label": "No results message",
+      "default": "No brands found matching your search"
+    },
+    {
+      "type": "header",
+      "content": "Brand logos"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brand_logos",
+      "label": "Show brand logos",
+      "info": "Logos are fetched from shop.metafields.brands.[vendor_handle].logo",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo maximum width",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "min_card_width",
+      "min": 150,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Minimum card width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Page title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "letter_heading_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Letter heading size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "brand_name_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Brand name size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "letter_heading_color",
+      "label": "Letter heading",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "letter_border_color",
+      "label": "Letter border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "brand_name_color",
+      "label": "Brand name",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "brand_name_hover_color",
+      "label": "Brand name hover",
+      "default": "#00a341"
+    },
+    {
+      "type": "header",
+      "content": "Search style"
+    },
+    {
+      "type": "color",
+      "id": "search_background",
+      "label": "Search background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "search_border_color",
+      "label": "Search border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "search_focus_color",
+      "label": "Search focus border",
+      "default": "#00a341"
+    },
+    {
+      "type": "range",
+      "id": "search_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Search border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Alphabet navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_background",
+      "label": "Navigation background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color",
+      "label": "Navigation text",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_bg",
+      "label": "Navigation hover background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_text",
+      "label": "Navigation hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "nav_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Navigation border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "nav_item_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Navigation item radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Brand cards"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "card_hover_bg",
+      "label": "Card hover background",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "card_hover_border",
+      "label": "Card hover border",
+      "default": "#00a341"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "All brands"
+    }
+  ]
+}
 {% endschema %}
