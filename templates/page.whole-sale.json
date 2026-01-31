@@ -50,10 +50,53 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
+    },
+    "contact_XEJJY4": {
+      "type": "contact",
+      "blocks": {
+        "dropdown_dTU69U": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Custom field",
+            "values": "value 1, value 2, value 3"
+          }
+        },
+        "text_qNTmfg": {
+          "type": "text",
+          "settings": {
+            "title": "Custom field",
+            "use_long_text": false,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_dTU69U",
+        "text_qNTmfg"
+      ],
+      "name": "Contact form",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Trade/Wholesale Account Sign Up",
+        "content": "<p>Complete the form to sign up.</p>",
+        "text_position": "center",
+        "contact_form_size": "large",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "contact_background": "",
+        "contact_text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_Vbwphb"
+    "image_with_text_overlay_Vbwphb",
+    "contact_XEJJY4"
   ]
 }
