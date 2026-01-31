@@ -101,6 +101,48 @@
     "faq_Tkqqwh": {
       "type": "faq",
       "blocks": {
+        "item_7BcacN": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_yqVVFw": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_Q9Eb4D": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_QRYgYW": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_7GphkT": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
+        "item_URqBKK": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+          }
+        },
         "item_m9hy7E": {
           "type": "item",
           "settings": {
@@ -124,6 +166,12 @@
         }
       },
       "block_order": [
+        "item_7BcacN",
+        "item_yqVVFw",
+        "item_Q9Eb4D",
+        "item_QRYgYW",
+        "item_7GphkT",
+        "item_URqBKK",
         "item_m9hy7E",
         "item_zNCqL3",
         "item_x47Byr"
@@ -132,8 +180,8 @@
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "title": "Reasons to choose GS Workwear to be your Wholesale Partner",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
         "answer_time": "Average answer time: 24h",
