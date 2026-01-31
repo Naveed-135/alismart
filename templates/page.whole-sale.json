@@ -51,52 +51,57 @@
         "overlay_opacity": 30
       }
     },
-    "contact_XEJJY4": {
-      "type": "contact",
+    "17698688248e2a0553": {
+      "type": "_blocks",
       "blocks": {
-        "dropdown_dTU69U": {
-          "type": "dropdown",
+        "ai_gen_block_5a8f005_69bPA3": {
+          "type": "ai_gen_block_5a8f005",
           "settings": {
-            "title": "Custom field",
-            "values": "value 1, value 2, value 3"
-          }
-        },
-        "text_qNTmfg": {
-          "type": "text",
-          "settings": {
-            "title": "Custom field",
-            "use_long_text": false,
-            "required": false
-          }
+            "form_heading": "Wholesale Account Application",
+            "form_description": "Please complete the form below to apply for a wholesale account. We will review your application and contact you shortly.",
+            "submit_button_text": "Submit",
+            "success_message": "Thank you for applying. We will review your request and contact you shortly.",
+            "desktop_width_percent": 100,
+            "form_padding": 40,
+            "spacing_between_fields": 20,
+            "heading_alignment": "left",
+            "form_background": "#ffffff",
+            "heading_color": "#1a1a1a",
+            "text_color": "#1a1a1a",
+            "required_color": "#f83a3a",
+            "border_color": "#e0e0e0",
+            "input_background": "#ffffff",
+            "input_border_color": "#cccccc",
+            "input_focus_border_color": "#00a341",
+            "button_background": "#00a341",
+            "button_hover_background": "#008a35",
+            "button_text_color": "#ffffff",
+            "success_background": "#d4edda",
+            "success_text_color": "#155724",
+            "error_background": "#f8d7da",
+            "error_text_color": "#721c24",
+            "heading_size": 32,
+            "section_heading_size": 20,
+            "description_size": 16,
+            "label_size": 14,
+            "input_size": 14,
+            "button_size": 16,
+            "form_border_radius": 8,
+            "input_border_radius": 4,
+            "button_border_radius": 4
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "dropdown_dTU69U",
-        "text_qNTmfg"
+        "ai_gen_block_5a8f005_69bPA3"
       ],
-      "name": "Contact form",
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "Trade/Wholesale Account Sign Up",
-        "content": "<p>Complete the form to sign up.</p>",
-        "text_position": "center",
-        "contact_form_size": "large",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "contact_background": "",
-        "contact_text_color": "",
-        "button_background": "",
-        "button_text_color": ""
-      }
+      "settings": {}
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_Vbwphb",
-    "contact_XEJJY4"
+    "17698688248e2a0553"
   ]
 }
