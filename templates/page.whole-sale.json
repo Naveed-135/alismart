@@ -97,11 +97,65 @@
         "ai_gen_block_5a8f005_69bPA3"
       ],
       "settings": {}
+    },
+    "faq_Tkqqwh": {
+      "type": "faq",
+      "blocks": {
+        "item_m9hy7E": {
+          "type": "item",
+          "settings": {
+            "title": "Extensive Product Range?",
+            "content": "<p>We have an extensive selection of workwear products, including safety clothing, protective footwear, PPE, corporate wear, and more. Whether your industry requires heavy-duty workwear or professional uniforms, we have you covered.</p>"
+          }
+        },
+        "item_zNCqL3": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        "item_x47Byr": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_m9hy7E",
+        "item_zNCqL3",
+        "item_x47Byr"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_Vbwphb",
-    "17698688248e2a0553"
+    "17698688248e2a0553",
+    "faq_Tkqqwh"
   ]
 }
