@@ -11,12 +11,49 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "content_width": "120ch"
+      }
+    },
+    "image_with_text_overlay_Vbwphb": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_LqLgXp": {
+          "type": "heading",
+          "settings": {
+            "text": "Trade & Wholesale Accounts",
+            "heading_tag": "h0"
+          }
+        },
+        "richtext_7YGqzR": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>At GS Workwear, we understand the importance of reliable and high-quality workwear for businesses across various industries. As a leading provider of workwear solutions, we take pride in offering a wide range of durable, functional, and stylish garments that meet the needs of your workforce.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LqLgXp",
+        "richtext_7YGqzR"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify://shop_images/pexels-tiger-lily-4483610_1.webp",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_with_text_overlay_Vbwphb"
   ]
 }
