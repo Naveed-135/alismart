@@ -1,6 +1,893 @@
+{% doc %}
+  @prompt
+    Create a Wholesale Contact / Registration form for my Shopify store.
+    
+    Form purpose:
+    Customers will apply for a wholesale account. After submission, I will manually review and approve them.
+    
+    Form fields (same order and structure as a professional B2B wholesale form):
+    
+    1. Company Name (text, required)
+    2. First Name (text, required)
+    3. Last Name (text, required)
+    
+    Section heading: "Company Shipping Address"
+    
+    4. Country (dropdown, required)
+    5. Shipping First Name (text, required)
+    6. Shipping Last Name (text, required)
+    7. Company / Attention (text)
+    8. Address (text, required)
+    9. Apartment, suite, etc. (text)
+    10. City (text, required)
+    11. Postcode / ZIP (text, required)
+    12. Phone number (country selector + phone input, required)
+    
+    Next section:
+    
+    13. Company Tax ID / VAT Number (text)
+    14. Business Website (URL)
+    15. Email Address (email, required)
+    16. Secondary Phone Number (country selector + phone input)
+    
+    Submit button text: "Submit"
+    
+    Form behavior:
+    - Use Shopify contact form functionality
+    - Send submission to store admin email
+    - Save data in Shopify admin (Inbox / Contact messages)
+    - Add tag "wholesale-request" to the contact/customer
+    - Show a success message after submission: 
+      "Thank you for applying. We will review your request and contact you shortly."
+    
+    Design requirements:
+    - Clean, modern, professional B2B style
+    - Mobile responsive
+    - Similar layout to a wholesale registration form
+    - Proper spacing and labels
+    If the email already exists as a customer, attach the submission to that customer profile.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-wholesale-form-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.form_padding }}px;
+    background-color: {{ block.settings.form_background }};
+    border-radius: {{ block.settings.form_border_radius }}px;
+  }
+
+  .ai-wholesale-form__container-{{ ai_gen_id }} {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ai-wholesale-form__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.spacing_between_fields }}px;
+    text-align: {{ block.settings.heading_alignment }};
+  }
+
+  .ai-wholesale-form__description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 {{ block.settings.spacing_between_fields | times: 2 }}px;
+    text-align: {{ block.settings.heading_alignment }};
+  }
+
+  .ai-wholesale-form__section-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.section_heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: {{ block.settings.spacing_between_fields | times: 2 }}px 0 {{ block.settings.spacing_between_fields }}px;
+    padding-bottom: {{ block.settings.spacing_between_fields | divided_by: 2 }}px;
+    border-bottom: 1px solid {{ block.settings.border_color }};
+  }
+
+  .ai-wholesale-form__field-group-{{ ai_gen_id }} {
+    margin-bottom: {{ block.settings.spacing_between_fields }}px;
+  }
+
+  .ai-wholesale-form__row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.spacing_between_fields }}px;
+  }
+
+  .ai-wholesale-form__label-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.text_color }};
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .ai-wholesale-form__required-{{ ai_gen_id }} {
+    color: {{ block.settings.required_color }};
+    margin-left: 4px;
+  }
+
+  .ai-wholesale-form__input-{{ ai_gen_id }},
+  .ai-wholesale-form__select-{{ ai_gen_id }},
+  .ai-wholesale-form__textarea-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: {{ block.settings.input_size }}px;
+    color: {{ block.settings.text_color }};
+    background-color: {{ block.settings.input_background }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    transition: border-color 0.2s ease;
+  }
+
+  .ai-wholesale-form__input-{{ ai_gen_id }}:focus,
+  .ai-wholesale-form__select-{{ ai_gen_id }}:focus,
+  .ai-wholesale-form__textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.input_focus_border_color }};
+  }
+
+  .ai-wholesale-form__phone-wrapper-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: {{ block.settings.spacing_between_fields | divided_by: 2 }}px;
+  }
+
+  .ai-wholesale-form__button-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: {{ block.settings.button_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.button_text_color }};
+    background-color: {{ block.settings.button_background }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: {{ block.settings.spacing_between_fields }}px;
+  }
+
+  .ai-wholesale-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+  }
+
+  .ai-wholesale-form__success-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: {{ block.settings.success_background }};
+    color: {{ block.settings.success_text_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    margin-top: {{ block.settings.spacing_between_fields }}px;
+    text-align: center;
+  }
+
+  .ai-wholesale-form__error-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: {{ block.settings.error_background }};
+    color: {{ block.settings.error_text_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    margin-top: {{ block.settings.spacing_between_fields }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-wholesale-form__row-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-wholesale-form-{{ ai_gen_id }} {
+      padding: {{ block.settings.form_padding | divided_by: 2 }}px;
+    }
+
+    .ai-wholesale-form__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .ai-wholesale-form__section-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.section_heading_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<wholesale-form-{{ ai_gen_id }} class="ai-wholesale-form-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-wholesale-form__container-{{ ai_gen_id }}">
+    {% if block.settings.form_heading != blank %}
+      <h2 class="ai-wholesale-form__heading-{{ ai_gen_id }}">{{ block.settings.form_heading }}</h2>
+    {% endif %}
+
+    {% if block.settings.form_description != blank %}
+      <div class="ai-wholesale-form__description-{{ ai_gen_id }}">{{ block.settings.form_description }}</div>
+    {% endif %}
+
+    {% form 'contact', id: 'wholesale-contact-form' %}
+      <input type="hidden" name="contact[tags]" value="wholesale-request">
+
+      {% if form.posted_successfully? %}
+        <div class="ai-wholesale-form__success-{{ ai_gen_id }}">
+          {{ block.settings.success_message }}
+        </div>
+      {% else %}
+        {% if form.errors %}
+          <div class="ai-wholesale-form__error-{{ ai_gen_id }}">
+            <p><strong>Please correct the following errors:</strong></p>
+            <ul>
+              {% for field in form.errors %}
+                <li>{{ field | capitalize }}: {{ form.errors.messages[field] }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="company-name-{{ ai_gen_id }}">
+            Company Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="text"
+            id="company-name-{{ ai_gen_id }}"
+            name="contact[company_name]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+            required
+          >
+        </div>
+
+        <div class="ai-wholesale-form__row-{{ ai_gen_id }}">
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="first-name-{{ ai_gen_id }}">
+              First Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="first-name-{{ ai_gen_id }}"
+              name="contact[first_name]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="last-name-{{ ai_gen_id }}">
+              Last Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="last-name-{{ ai_gen_id }}"
+              name="contact[last_name]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+        </div>
+
+        <h3 class="ai-wholesale-form__section-heading-{{ ai_gen_id }}">Company Shipping Address</h3>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="country-{{ ai_gen_id }}">
+            Country<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <select
+            id="country-{{ ai_gen_id }}"
+            name="contact[country]"
+            class="ai-wholesale-form__select-{{ ai_gen_id }}"
+            required
+          >
+            <option value="">Select a country</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Austria">Austria</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Norway">Norway</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Finland">Finland</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Greece">Greece</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Romania">Romania</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Malta">Malta</option>
+            <option value="Cyprus">Cyprus</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Japan">Japan</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="China">China</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+            <option value="South Africa">South Africa</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Turkey">Turkey</option>
+            <option value="Israel">Israel</option>
+            <option value="Russia">Russia</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="ai-wholesale-form__row-{{ ai_gen_id }}">
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="shipping-first-name-{{ ai_gen_id }}">
+              Shipping First Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="shipping-first-name-{{ ai_gen_id }}"
+              name="contact[shipping_first_name]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="shipping-last-name-{{ ai_gen_id }}">
+              Shipping Last Name<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="shipping-last-name-{{ ai_gen_id }}"
+              name="contact[shipping_last_name]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="company-attention-{{ ai_gen_id }}">
+            Company / Attention
+          </label>
+          <input
+            type="text"
+            id="company-attention-{{ ai_gen_id }}"
+            name="contact[company_attention]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          >
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="address-{{ ai_gen_id }}">
+            Address<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="text"
+            id="address-{{ ai_gen_id }}"
+            name="contact[address]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+            required
+          >
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="apartment-{{ ai_gen_id }}">
+            Apartment, suite, etc.
+          </label>
+          <input
+            type="text"
+            id="apartment-{{ ai_gen_id }}"
+            name="contact[apartment]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          >
+        </div>
+
+        <div class="ai-wholesale-form__row-{{ ai_gen_id }}">
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="city-{{ ai_gen_id }}">
+              City<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="city-{{ ai_gen_id }}"
+              name="contact[city]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+
+          <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+            <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="postcode-{{ ai_gen_id }}">
+              Postcode / ZIP<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+            </label>
+            <input
+              type="text"
+              id="postcode-{{ ai_gen_id }}"
+              name="contact[postcode]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="phone-{{ ai_gen_id }}">
+            Phone Number<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <div class="ai-wholesale-form__phone-wrapper-{{ ai_gen_id }}">
+            <select
+              id="phone-country-{{ ai_gen_id }}"
+              name="contact[phone_country]"
+              class="ai-wholesale-form__select-{{ ai_gen_id }}"
+              required
+            >
+              <option value="+44">+44 (UK)</option>
+              <option value="+1">+1 (US/CA)</option>
+              <option value="+61">+61 (AU)</option>
+              <option value="+49">+49 (DE)</option>
+              <option value="+33">+33 (FR)</option>
+              <option value="+39">+39 (IT)</option>
+              <option value="+34">+34 (ES)</option>
+              <option value="+31">+31 (NL)</option>
+              <option value="+32">+32 (BE)</option>
+              <option value="+353">+353 (IE)</option>
+              <option value="+43">+43 (AT)</option>
+              <option value="+41">+41 (CH)</option>
+              <option value="+46">+46 (SE)</option>
+              <option value="+47">+47 (NO)</option>
+              <option value="+45">+45 (DK)</option>
+              <option value="+358">+358 (FI)</option>
+              <option value="+48">+48 (PL)</option>
+              <option value="+351">+351 (PT)</option>
+              <option value="+30">+30 (GR)</option>
+              <option value="+64">+64 (NZ)</option>
+              <option value="+81">+81 (JP)</option>
+              <option value="+82">+82 (KR)</option>
+              <option value="+65">+65 (SG)</option>
+              <option value="+852">+852 (HK)</option>
+              <option value="+91">+91 (IN)</option>
+              <option value="+86">+86 (CN)</option>
+              <option value="+55">+55 (BR)</option>
+              <option value="+52">+52 (MX)</option>
+              <option value="+27">+27 (ZA)</option>
+              <option value="+971">+971 (AE)</option>
+            </select>
+            <input
+              type="tel"
+              id="phone-{{ ai_gen_id }}"
+              name="contact[phone]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="tax-id-{{ ai_gen_id }}">
+            Company Tax ID / VAT Number
+          </label>
+          <input
+            type="text"
+            id="tax-id-{{ ai_gen_id }}"
+            name="contact[tax_id]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+          >
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="website-{{ ai_gen_id }}">
+            Business Website
+          </label>
+          <input
+            type="url"
+            id="website-{{ ai_gen_id }}"
+            name="contact[website]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+            placeholder="https://"
+          >
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="email-{{ ai_gen_id }}">
+            Email Address<span class="ai-wholesale-form__required-{{ ai_gen_id }}">*</span>
+          </label>
+          <input
+            type="email"
+            id="email-{{ ai_gen_id }}"
+            name="contact[email]"
+            class="ai-wholesale-form__input-{{ ai_gen_id }}"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="ai-wholesale-form__field-group-{{ ai_gen_id }}">
+          <label class="ai-wholesale-form__label-{{ ai_gen_id }}" for="secondary-phone-{{ ai_gen_id }}">
+            Secondary Phone Number
+          </label>
+          <div class="ai-wholesale-form__phone-wrapper-{{ ai_gen_id }}">
+            <select
+              id="secondary-phone-country-{{ ai_gen_id }}"
+              name="contact[secondary_phone_country]"
+              class="ai-wholesale-form__select-{{ ai_gen_id }}"
+            >
+              <option value="+44">+44 (UK)</option>
+              <option value="+1">+1 (US/CA)</option>
+              <option value="+61">+61 (AU)</option>
+              <option value="+49">+49 (DE)</option>
+              <option value="+33">+33 (FR)</option>
+              <option value="+39">+39 (IT)</option>
+              <option value="+34">+34 (ES)</option>
+              <option value="+31">+31 (NL)</option>
+              <option value="+32">+32 (BE)</option>
+              <option value="+353">+353 (IE)</option>
+              <option value="+43">+43 (AT)</option>
+              <option value="+41">+41 (CH)</option>
+              <option value="+46">+46 (SE)</option>
+              <option value="+47">+47 (NO)</option>
+              <option value="+45">+45 (DK)</option>
+              <option value="+358">+358 (FI)</option>
+              <option value="+48">+48 (PL)</option>
+              <option value="+351">+351 (PT)</option>
+              <option value="+30">+30 (GR)</option>
+              <option value="+64">+64 (NZ)</option>
+              <option value="+81">+81 (JP)</option>
+              <option value="+82">+82 (KR)</option>
+              <option value="+65">+65 (SG)</option>
+              <option value="+852">+852 (HK)</option>
+              <option value="+91">+91 (IN)</option>
+              <option value="+86">+86 (CN)</option>
+              <option value="+55">+55 (BR)</option>
+              <option value="+52">+52 (MX)</option>
+              <option value="+27">+27 (ZA)</option>
+              <option value="+971">+971 (AE)</option>
+            </select>
+            <input
+              type="tel"
+              id="secondary-phone-{{ ai_gen_id }}"
+              name="contact[secondary_phone]"
+              class="ai-wholesale-form__input-{{ ai_gen_id }}"
+            >
+          </div>
+        </div>
+
+        <button type="submit" class="ai-wholesale-form__button-{{ ai_gen_id }}">
+          {{ block.settings.submit_button_text }}
+        </button>
+      {% endif %}
+    {% endform %}
+  </div>
+</wholesale-form-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class WholesaleForm{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        const form = this.querySelector('form');
+        if (form) {
+          form.addEventListener('submit', this.handleSubmit.bind(this));
+        }
+      }
+
+      handleSubmit(event) {
+        const requiredFields = this.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = '{{ block.settings.error_text_color }}';
+          } else {
+            field.style.borderColor = '{{ block.settings.input_border_color }}';
+          }
+        });
+
+        if (!isValid) {
+          event.preventDefault();
+        }
+      }
+    }
+
+    customElements.define('wholesale-form-{{ ai_gen_id }}', WholesaleForm{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Wholesale contact form",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Form content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "form_heading",
+      "label": "Heading",
+      "default": "Wholesale Account Application"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "form_description",
+      "label": "Description",
+      "default": "Please complete the form below to apply for a wholesale account. We will review your application and contact you shortly."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Submit"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you for applying. We will review your request and contact you shortly."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "label": "Form padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "spacing_between_fields",
+      "label": "Spacing between fields",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Form background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "required_color",
+      "label": "Required asterisk color",
+      "default": "#f83a3a"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Section border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_border_color",
+      "label": "Input focus border color",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#008a35"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "success_background",
+      "label": "Success message background",
+      "default": "#d4edda"
+    },
+    {
+      "type": "color",
+      "id": "success_text_color",
+      "label": "Success message text",
+      "default": "#155724"
+    },
+    {
+      "type": "color",
+      "id": "error_background",
+      "label": "Error message background",
+      "default": "#f8d7da"
+    },
+    {
+      "type": "color",
+      "id": "error_text_color",
+      "label": "Error message text",
+      "default": "#721c24"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "section_heading_size",
+      "label": "Section heading size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "input_size",
+      "label": "Input size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Form border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale contact form"
+    }
+  ]
+}
 {% endschema %}
