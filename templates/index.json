@@ -145,7 +145,7 @@
             "label_1": "PortWest",
             "heading_1": "Save Today",
             "button_text_1": "Shop Now",
-            "button_link_1": "",
+            "button_link_1": "shopify://collections/port-west",
             "image_2": "shopify://shop_images/Women_s_wear.png",
             "label_2": "Workwear For All",
             "heading_2": "Women's Range",
@@ -155,7 +155,7 @@
             "label_3": "",
             "heading_3": "Open A Trade Account",
             "button_text_3": "Apply Now",
-            "button_link_3": ""
+            "button_link_3": "shopify://pages/whole-sale"
           },
           "blocks": {}
         }
