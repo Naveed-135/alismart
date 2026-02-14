@@ -198,12 +198,35 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "1771051774cad29cb5": {
+      "type": "apps",
+      "blocks": {
+        "bss_b2b_solution_form_azfE6T": {
+          "type": "shopify://apps/bss-b2b-solution/blocks/form/451233f2-9631-4c49-8b6f-057e4ebcde7f",
+          "settings": {
+            "form_id": "33244"
+          }
+        }
+      },
+      "block_order": [
+        "bss_b2b_solution_form_azfE6T"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_Vbwphb",
     "17698688248e2a0553",
-    "faq_Tkqqwh"
+    "faq_Tkqqwh",
+    "1771051774cad29cb5"
   ]
 }
