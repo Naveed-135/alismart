@@ -43,7 +43,7 @@
         "allow_transparent_header": false,
         "enable_parallax": true,
         "image_size": "auto",
-        "image": "shopify://shop_images/Untitled_design_7.jpg",
+        "image": "shopify://shop_images/hero_banner.png",
         "mobile_image": "shopify://shop_images/DSC07060_1.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
