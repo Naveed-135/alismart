@@ -1,3 +1,4 @@
+{%- comment %}BSS Login{% endcomment -%}{%- assign bss_product__has_only_default_variant = false %} {% assign _variants_count = 0 %} {% assign bss_product__first_available_variant = nil %} {% assign bss_product__selected_variant = nil %} {% assign bss_product__selected_or_first_available_variant = nil %} {% assign use_variant = true %} {% for variant in product.variants %} {% capture var %} {% render 'bss-lock-condition', scope: 'subject', subject: variant, subject_parent: product, bss_lock_action: 'handle-variant-default' %} {% endcapture %} {% if var contains "true" %} {% continue %} {% endif %} {% assign _variants_count = _variants_count | plus: 1 %} {% if bss_product__first_available_variant == nil and variant.available %} {% assign bss_product__first_available_variant = variant %} {% endif %} {% if bss_product__selected_variant == nil and variant.selected %} {% assign bss_product__selected_variant = variant %} {% endif %} {% if variant == product.selected_or_first_available_variant %} {% assign bss_product__selected_or_first_available_variant = product.selected_or_first_available_variant %} {% endif %} {% endfor %} {% if _variants_count == 1 %} {% assign bss_product__has_only_default_variant = true %} {% endif %} {% if bss_product__selected_or_first_available_variant == nil %} {% assign bss_product__selected_or_first_available_variant = bss_product__first_available_variant %} {% endif -%}{%- comment %}BSS-Login{% endcomment -%}
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
 BUY BUTTONS
@@ -29,16 +30,16 @@ Supported variables
   {%- assign show_payment_button = false -%}
 {%- endif -%}
 
-{%- form 'product', product, is: 'product-form', id: form_id -%}
-  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+{% comment %} BSS Lock Begin Hide Add To Cart {% endcomment %} {% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', get_content: true, bss_lock_action: 'bss_hide_atc' %} {% endcapture %} {% if bss_lock_check contains 'bss-hide-atc' %} {{ bss_lock_check }} {% endif %} {% comment %} BSS Lock End Hide Add To Cart {% endcomment %}{%- form 'product', product, is: 'product-form', id: form_id -%}
+  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ bss_product__selected_or_first_available_variant.id }}">
 
   {%- assign button_disabled = false -%}
   {%- assign button_size = button_size | default: 'xl' -%}
 
-  {%- if product.selected_or_first_available_variant == nil -%}
+  {%- if bss_product__selected_or_first_available_variant == nil -%}
     {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
     {%- assign button_disabled = true -%}
-  {%- elsif product.selected_or_first_available_variant.available -%}
+  {%- elsif bss_product__selected_or_first_available_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
       {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
     {%- else -%}
@@ -84,7 +85,7 @@ Supported variables
 
         <style>
           #{{ form_id }} .shopify-payment-button {
-            {%- unless product.selected_or_first_available_variant.available -%}
+            {%- unless bss_product__selected_or_first_available_variant.available -%}
               display: none;
             {%- endunless -%}
 

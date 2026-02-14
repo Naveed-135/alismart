@@ -1,3 +1,4 @@
+{%- comment %}BSS Login{% endcomment -%}{%- assign bss_product__has_only_default_variant = false %} {% assign _variants_count = 0 %} {% assign bss_product__first_available_variant = nil %} {% assign bss_product__selected_variant = nil %} {% assign bss_product__selected_or_first_available_variant = nil %} {% assign use_variant = true %} {% for variant in product.variants %} {% capture var %} {% render 'bss-lock-condition', scope: 'subject', subject: variant, subject_parent: product, bss_lock_action: 'handle-variant-default' %} {% endcapture %} {% if var contains "true" %} {% continue %} {% endif %} {% assign _variants_count = _variants_count | plus: 1 %} {% if bss_product__first_available_variant == nil and variant.available %} {% assign bss_product__first_available_variant = variant %} {% endif %} {% if bss_product__selected_variant == nil and variant.selected %} {% assign bss_product__selected_variant = variant %} {% endif %} {% if variant == product.selected_or_first_available_variant %} {% assign bss_product__selected_or_first_available_variant = product.selected_or_first_available_variant %} {% endif %} {% endfor %} {% if _variants_count == 1 %} {% assign bss_product__has_only_default_variant = true %} {% endif %} {% if bss_product__selected_or_first_available_variant == nil %} {% assign bss_product__selected_or_first_available_variant = bss_product__first_available_variant %} {% endif -%}{%- comment %}BSS-Login{% endcomment -%}
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
@@ -62,7 +63,7 @@
 
 {%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
-    {%- if product.selected_or_first_available_variant.available -%}
+    {%- if bss_product__selected_or_first_available_variant.available -%}
       <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
         {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
 
@@ -70,7 +71,7 @@
           {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
         </buy-buttons>
 
-        {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+        {%- assign image = bss_product__selected_or_first_available_variant.featured_media | default: product.featured_media -%}
 
         <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
           {%- if image != blank -%}
@@ -87,7 +88,7 @@
             {%- endif -%}
 
             <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
-            <span bss-b2b-product-id="{{ product.id }}" bss-b2b-product-price bss-b2b-variant-price bss-b2b-variant-id="{{ product.selected_or_first_available_variant.id }}" bss-b2b-featured-product="true">{%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}</span>
+            <span bss-b2b-product-id="{{ product.id }}" bss-b2b-product-price bss-b2b-variant-price bss-b2b-variant-id="{{ bss_product__selected_or_first_available_variant.id }}" bss-b2b-featured-product="true">{%- render 'price-list', product: product, variant: bss_product__selected_or_first_available_variant, form_id: product_form_id -%}</span>
           </div>
 
           <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>

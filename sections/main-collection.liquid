@@ -48,7 +48,7 @@
       --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
     }
 
-    {%- for block in section.blocks -%}
+    {%- for block in section.blocks -%}{% comment %}start BSS Commerce Hide Price{% endcomment %}{% capture bss_lock_check %}{% render 'bss-lock-condition', scope: 'subject', subject: block, variable: 'transparent' %}{% endcapture %}{% if bss_lock_check contains 'true' %}{% render 'bss-hide-product-design', section: 'sections/main-collection.liquid', subject: block %}{% continue %}{% endif %}{% comment %}end BSS Commerce Hide Price{% endcomment %}
       #block-{{ section.id }}-{{ block.id }} {
         --product-list-promo-grid-column: span {{ block.settings.column_span }};
 
@@ -136,8 +136,8 @@
 
               <reveal-items selector=".product-list > *">
                 <product-list class="product-list" role="region" aria-live="polite">
-                  {%- for product in collection.products -%}
-                    {%- for block in section.blocks -%}
+                  {%- for product in collection.products -%}{% comment %}start BSS Commerce Hide Price{% endcomment %}{% capture bss_lock_check %}{% render 'bss-lock-condition', scope: 'subject', subject: product, variable: 'transparent' %}{% endcapture %}{% if bss_lock_check contains 'true' %}{% render 'bss-hide-product-design', section: 'sections/main-collection.liquid', subject: product %}{% continue %}{% endif %}{% comment %}end BSS Commerce Hide Price{% endcomment %}
+                    {%- for block in section.blocks -%}{% comment %}start BSS Commerce Hide Price{% endcomment %}{% capture bss_lock_check %}{% render 'bss-lock-condition', scope: 'subject', subject: block, variable: 'transparent' %}{% endcapture %}{% if bss_lock_check contains 'true' %}{% render 'bss-hide-product-design', section: 'sections/main-collection.liquid', subject: block %}{% continue %}{% endif %}{% comment %}end BSS Commerce Hide Price{% endcomment %}
                       {%- if forloop.parentloop.index != block.settings.position -%}
                         {%- continue -%}
                       {%- endif -%}

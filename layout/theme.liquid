@@ -1,3 +1,4 @@
+{%- comment %}BSS Login{% endcomment -%}{% include 'bss-lock' %}{%- comment %}BSS-Login{% endcomment -%}
 {%- comment -%}
 ------------------------------------------------------------------------------------------------------------------------
 NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing this theme as much as we did for
@@ -10,7 +11,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 <!doctype html>
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
-  <head>
+  <head>{{ 'bss-lock-settings.css' | asset_url | stylesheet_tag }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.header_background }}">

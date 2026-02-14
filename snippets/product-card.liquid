@@ -97,7 +97,7 @@ Supported variables
           {%- assign quick_add_label = 'product.general.quick_add' | t -%}
 
           {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
-            {%- form 'product', product, is: 'product-form' -%}
+            {% comment %} BSS Lock Begin Hide Add To Cart {% endcomment %} {% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', get_content: true, bss_lock_action: 'bss_hide_atc' %} {% endcapture %} {% if bss_lock_check contains 'bss-hide-atc' %} {{ bss_lock_check }} {% endif %} {% comment %} BSS Lock End Hide Add To Cart {% endcomment %}{%- form 'product', product, is: 'product-form' -%}
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
               <div class="pointer-fine:hidden">
