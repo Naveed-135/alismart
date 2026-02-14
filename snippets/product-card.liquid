@@ -138,7 +138,7 @@ Supported variables
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
+  <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}" bss-b2b-product-qb-id="{{ product.id }}">
     {%- if show_vendor and product.vendor != blank -%}
       {%- if show_rating and text_alignment != 'center' -%}
         <div class="rating-with-text w-full">
@@ -166,7 +166,7 @@ Supported variables
         <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
       {%- endif -%}
 
-      {%- render 'price-list', product: product, text_alignment: text_alignment -%}
+      <span bss-b2b-product-id="{{ product.id }}" bss-b2b-product-price>{%- render 'price-list', product: product, text_alignment: text_alignment -%}</span>
     </div>
 
     {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}

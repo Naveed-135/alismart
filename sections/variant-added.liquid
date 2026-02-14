@@ -22,7 +22,7 @@ by the theme and is not meant to be included directly into a page.
       <div class="v-stack gap-0.5">
         <a href="{{ product_variant.url }}" class="bold justify-self-start">{{ product_variant.product.title }}</a>
         {%- assign matched_line_item = cart.items | where: 'product_id', product_variant.product.id | first -%}
-        {%- render 'price-list', product: product_variant.product, line_item: matched_line_item -%}
+        <span bss-b2b-cart-item-key="{{ matched_line_item.key }}" bss-b2b-final-line-price>{%- render 'price-list', product: product_variant.product, line_item: matched_line_item -%}</span>
       </div>
 
       {%- if matched_line_item.line_level_discount_allocations != blank -%}
