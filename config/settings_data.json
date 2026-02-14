@@ -91,6 +91,11 @@
         "type": "shopify://apps/bss-b2b-solution/blocks/config-header/451233f2-9631-4c49-8b6f-057e4ebcde7f",
         "disabled": false,
         "settings": {}
+      },
+      "14043481873128526568": {
+        "type": "shopify://apps/bss-b2b-lock/blocks/config-header/2f6e9bdf-2dd6-42c6-8d67-58be57506f80",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
