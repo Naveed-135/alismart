@@ -51,53 +51,6 @@
         "overlay_opacity": 30
       }
     },
-    "17698688248e2a0553": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_5a8f005_69bPA3": {
-          "type": "ai_gen_block_5a8f005",
-          "settings": {
-            "form_heading": "Wholesale Account Application",
-            "form_description": "Please complete the form below to apply for a wholesale account. We will review your application and contact you shortly.",
-            "submit_button_text": "Submit",
-            "success_message": "Thank you for applying. We will review your request and contact you shortly.",
-            "desktop_width_percent": 100,
-            "form_padding": 40,
-            "spacing_between_fields": 20,
-            "heading_alignment": "left",
-            "form_background": "#ffffff",
-            "heading_color": "#1a1a1a",
-            "text_color": "#1a1a1a",
-            "required_color": "#f83a3a",
-            "border_color": "#e0e0e0",
-            "input_background": "#ffffff",
-            "input_border_color": "#cccccc",
-            "input_focus_border_color": "#00a341",
-            "button_background": "#00a341",
-            "button_hover_background": "#008a35",
-            "button_text_color": "#ffffff",
-            "success_background": "#d4edda",
-            "success_text_color": "#155724",
-            "error_background": "#f8d7da",
-            "error_text_color": "#721c24",
-            "heading_size": 32,
-            "section_heading_size": 20,
-            "description_size": 16,
-            "label_size": 14,
-            "input_size": 14,
-            "button_size": 16,
-            "form_border_radius": 8,
-            "input_border_radius": 4,
-            "button_border_radius": 4
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_5a8f005_69bPA3"
-      ],
-      "settings": {}
-    },
     "faq_Tkqqwh": {
       "type": "faq",
       "blocks": {
@@ -225,8 +178,7 @@
   "order": [
     "main",
     "image_with_text_overlay_Vbwphb",
-    "17698688248e2a0553",
-    "faq_Tkqqwh",
-    "1771051774cad29cb5"
+    "1771051774cad29cb5",
+    "faq_Tkqqwh"
   ]
 }
