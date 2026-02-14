@@ -75,7 +75,7 @@
         "newsletter_NydbcL": {
           "type": "newsletter",
           "settings": {
-            "image": "shopify://shop_images/logo_1.jpg",
+            "image": "shopify://shop_images/alismart_logo.jpg",
             "image_width": 170,
             "heading_size": "h4",
             "title": "Contact Info",
