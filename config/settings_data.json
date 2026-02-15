@@ -195,5 +195,11 @@
       "product_color_display": "swatch",
       "product_info_alignment": "center"
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".field-password {overflow: hidden;}",
+      ".password-input {height: 42px;}"
+    ]
   }
 }
