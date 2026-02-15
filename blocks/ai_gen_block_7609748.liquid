@@ -370,7 +370,7 @@
 
       {% if block.settings.show_az_nav %}
         <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation 3" data-az-nav>
-          {% for i in (65..90) %}
+          {% comment %} {% for i in (65..90) %}
             {% assign letter = i | minus: 65 | plus: 97 | modulo: 26 | plus: 65 %}
             {% assign letter_char = '' %}
             {% case letter %}
@@ -409,7 +409,18 @@
             >
               {{ letter_char }}
             </a>
-          {% endfor %}
+          {% endfor %} {% endcomment %}
+           {% for i in (65..90) %}
+  {% assign letter_char = i | chr %}
+  <a
+    href="#letter-{{ letter_char | downcase }}"
+    class="ai-brands-az-letter-{{ ai_gen_id }}"
+    data-letter="{{ letter_char }}"
+    aria-label="Jump to brands starting with {{ letter_char }}"
+  >
+    {{ letter_char }}
+  </a>
+{% endfor %}
         </nav>
       {% endif %}
 
