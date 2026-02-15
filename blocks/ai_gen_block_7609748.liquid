@@ -410,8 +410,8 @@
               {{ letter_char }}
             </a>
           {% endfor %} {% endcomment %}
-           {% for i in (65..90) %}
-  {% assign letter_char = i | chr %}
+         {% assign letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: "" %}
+{% for letter_char in letters %}
   <a
     href="#letter-{{ letter_char | downcase }}"
     class="ai-brands-az-letter-{{ ai_gen_id }}"
@@ -421,6 +421,7 @@
     {{ letter_char }}
   </a>
 {% endfor %}
+
         </nav>
       {% endif %}
 
