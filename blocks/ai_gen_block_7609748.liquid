@@ -369,7 +369,7 @@
       {% endif %}
 
       {% if block.settings.show_az_nav %}
-        <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation" data-az-nav>
+        <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation 3" data-az-nav>
           {% for i in (65..90) %}
             {% assign letter = i | minus: 65 | plus: 97 | modulo: 26 | plus: 65 %}
             {% assign letter_char = '' %}

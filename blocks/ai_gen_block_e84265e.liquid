@@ -228,7 +228,7 @@
     {% assign vendors_map = vendors_map | append: first_char | append: '|' | append: vendor | append: '||' %}
   {% endfor %}
 
-  <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation">
+  <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation 4">
     {% for letter in alphabet %}
       {% assign has_vendors = false %}
       {% if vendors_map contains letter %}

@@ -323,7 +323,7 @@
     {% assign all_vendors = shop.vendors | sort %}
     {% assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' %}
 
-    <nav class="ai-brands-alphabet-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation">
+    <nav class="ai-brands-alphabet-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation 1">
       {% for letter in alphabet %}
         {% assign has_brands = false %}
         {% for vendor in all_vendors %}
