@@ -121,6 +121,11 @@
         "type": "shopify://apps/pareto-order-limit/blocks/app-embed-block/6fbe20db-eadd-42b3-bc67-0e44a53ed12f",
         "disabled": true,
         "settings": {}
+      },
+      "8212079404471584892": {
+        "type": "shopify://apps/sami-order-limits/blocks/app-embed/89f388f4-7ddb-4368-8d89-3937e2145b24",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
