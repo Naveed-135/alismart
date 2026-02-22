@@ -114,7 +114,7 @@
       },
       "12450984056772916534": {
         "type": "shopify://apps/nexo-order-limits/blocks/limit-x-app-embed/3edaf63f-82b9-4315-9ff7-4b4a72388ad3",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }

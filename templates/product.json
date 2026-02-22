@@ -61,6 +61,10 @@
           "type": "separator",
           "settings": {}
         },
+        "avada_order_limits_app_block_zARVaa": {
+          "type": "shopify://apps/avada-order-limits/blocks/app-block/d3021427-4f7b-49c8-8963-29d1d52b8956",
+          "settings": {}
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -130,6 +134,7 @@
         "payment_terms",
         "inventory_EneKQ4",
         "separator",
+        "avada_order_limits_app_block_zARVaa",
         "variant_picker",
         "quantity_selector",
         "offer_X7xFJY",
