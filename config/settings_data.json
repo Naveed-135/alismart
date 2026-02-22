@@ -116,6 +116,11 @@
         "type": "shopify://apps/nexo-order-limits/blocks/limit-x-app-embed/3edaf63f-82b9-4315-9ff7-4b4a72388ad3",
         "disabled": true,
         "settings": {}
+      },
+      "1854489755362259810": {
+        "type": "shopify://apps/pareto-order-limit/blocks/app-embed-block/6fbe20db-eadd-42b3-bc67-0e44a53ed12f",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
