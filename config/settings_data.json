@@ -124,7 +124,7 @@
       },
       "8212079404471584892": {
         "type": "shopify://apps/sami-order-limits/blocks/app-embed/89f388f4-7ddb-4368-8d89-3937e2145b24",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }
