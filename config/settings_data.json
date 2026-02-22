@@ -102,11 +102,6 @@
         "disabled": false,
         "settings": {}
       },
-      "18147337299481159562": {
-        "type": "shopify://apps/pify-order-purchase-limit/blocks/pol-embed/af8ef589-a84b-4e47-8148-477204635f2e",
-        "disabled": true,
-        "settings": {}
-      },
       "12450984056772916534": {
         "type": "shopify://apps/nexo-order-limits/blocks/limit-x-app-embed/3edaf63f-82b9-4315-9ff7-4b4a72388ad3",
         "disabled": true,
@@ -114,6 +109,11 @@
       },
       "15472879455061085326": {
         "type": "shopify://apps/avada-order-limits/blocks/app-embed/d3021427-4f7b-49c8-8963-29d1d52b8956",
+        "disabled": true,
+        "settings": {}
+      },
+      "18147337299481159562": {
+        "type": "shopify://apps/pify-order-purchase-limit/blocks/pol-embed/af8ef589-a84b-4e47-8148-477204635f2e",
         "disabled": false,
         "settings": {}
       }
