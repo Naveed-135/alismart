@@ -108,6 +108,28 @@
         "settings": {
           "async": false
         }
+      },
+      "2840289715346598064": {
+        "type": "shopify://apps/vat-tax-switcher/blocks/switcher-embed/019a6d5b-f2a8-72b2-8f21-38aee646508d",
+        "disabled": false,
+        "settings": {
+          "renderer": "1",
+          "css_selector": "",
+          "insert": "prepend",
+          "base_value": "0",
+          "vat": 20,
+          "switcherInactiveColor": "#e3e3e3",
+          "switcherActiveColor": "#00a634",
+          "switcherKnobColor": "#ffffff",
+          "switcherTextColor": "#000000",
+          "switcherIncludingLabel": "Incl. TAX",
+          "switcherExcludingLabel": "Excl. TAX",
+          "textSize": 14,
+          "toggleWidth": 58,
+          "toggleRadius": 16,
+          "toggleHeight": 32,
+          "toggleKnobRadius": 24
+        }
       }
     }
   },
