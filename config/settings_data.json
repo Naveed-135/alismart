@@ -114,7 +114,7 @@
         "disabled": false,
         "settings": {
           "renderer": "5",
-          "css_selector": ".header__logo",
+          "css_selector": ".header__secondary-nav",
           "insert": "prepend",
           "base_value": "0",
           "vat": 20,
