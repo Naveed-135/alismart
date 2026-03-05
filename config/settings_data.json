@@ -113,7 +113,7 @@
         "type": "shopify://apps/vat-tax-switcher/blocks/switcher-embed/019a6d5b-f2a8-72b2-8f21-38aee646508d",
         "disabled": false,
         "settings": {
-          "renderer": "1",
+          "renderer": "3",
           "css_selector": "",
           "insert": "prepend",
           "base_value": "0",
