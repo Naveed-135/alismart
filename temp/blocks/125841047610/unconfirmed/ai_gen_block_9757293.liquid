@@ -1,6 +1,884 @@
+{% doc %}
+  @prompt
+    Create a **premium custom product tabs section for the Dawn theme** with a modern and unique design that is different from standard Shopify stores.
+    
+    The section should contain **four dynamic tabs**:
+    
+    1. **Specification Tab**
+    
+    * Show this tab only if `product.metafields.custom.specification` exists.
+    * Render the metafield as **rich text** supporting headings, lists, images, and formatted text.
+    * Content should be clean, readable, and responsive.
+    * Hide the tab completely if the metafield is empty.
+    
+    2. **Related Products Tab**
+    
+    * Use **Shopify product recommendations API**.
+    * Automatically load recommended products for the current product.
+    * Exclude the current product automatically.
+    * Show a **maximum of 4 products**.
+    * Display products in a **smooth horizontal slider on desktop and swipeable carousel on mobile**.
+    * Each product card should include:
+    
+      * Product image
+      * Product title
+      * Product price
+      * Add to cart button
+    
+    3. **Alternative Products Tab**
+    
+    * Use `product.metafields.custom.alternative_products` (list of products).
+    * Display products using the **same slider layout as related products**.
+    * Limit to **4 products**.
+    * Hide the tab completely if the metafield is empty.
+    
+    4. **Product Images Tab**
+    
+    * Show images from `product.metafields.custom.product_images` (list of images).
+    * Display images in a **responsive gallery slider**.
+    * On desktop show **4 images per row**, on tablet **2**, on mobile **1 swipeable image**.
+    * Images should have **rounded corners and subtle hover zoom effect**.
+    * Hide this tab if no images exist.
+    
+    Design Requirements:
+    
+    * Must match **Dawn theme styling but look more premium and modern**.
+    * Tabs should have:
+    
+      * **Animated underline for active tab**
+      * Smooth **fade transition between tabs**
+      * Horizontal scroll on mobile
+    * Product cards should include:
+    
+      * Soft shadow
+      * Rounded corners
+      * Hover elevation
+    * Use **minimal and professional e-commerce design**.
+    * Make the entire section **fully responsive and optimized for performance**.
+    * Use **Shopify Liquid, CSS, and vanilla JavaScript only**.
+    * Follow **Dawn theme structure and best practices**.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign has_specification = false
+  assign has_alternative_products = false
+  assign has_product_images = false
+  
+  if product.metafields.custom.specification != blank
+    assign has_specification = true
+  endif
+  
+  if product.metafields.custom.alternative_products != blank and product.metafields.custom.alternative_products.count > 0
+    assign has_alternative_products = true
+  endif
+  
+  if product.metafields.custom.product_images != blank and product.metafields.custom.product_images.count > 0
+    assign has_product_images = true
+  endif
+%}
+
+{% style %}
+  .ai-product-tabs-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-product-tabs__nav-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 32px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .ai-product-tabs__nav-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-product-tabs__tab-button-{{ ai_gen_id }} {
+    position: relative;
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    font-size: {{ block.settings.tab_font_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.tab_inactive_color }};
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ai-product-tabs__tab-button-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: {{ block.settings.tab_active_color }};
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .ai-product-tabs__tab-button-{{ ai_gen_id }}.active {
+    color: {{ block.settings.tab_active_color }};
+  }
+
+  .ai-product-tabs__tab-button-{{ ai_gen_id }}.active::after {
+    transform: scaleX(1);
+  }
+
+  .ai-product-tabs__tab-button-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.tab_active_color }};
+  }
+
+  .ai-product-tabs__content-{{ ai_gen_id }} {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .ai-product-tabs__panel-{{ ai_gen_id }} {
+    display: none;
+    opacity: 0;
+    animation: ai-fade-in-{{ ai_gen_id }} 0.4s ease forwards;
+  }
+
+  .ai-product-tabs__panel-{{ ai_gen_id }}.active {
+    display: block;
+  }
+
+  @keyframes ai-fade-in-{{ ai_gen_id }} {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ai-product-tabs__specification-{{ ai_gen_id }} {
+    line-height: 1.7;
+    color: {{ block.settings.content_text_color }};
+  }
+
+  .ai-product-tabs__specification-{{ ai_gen_id }} h1,
+  .ai-product-tabs__specification-{{ ai_gen_id }} h2,
+  .ai-product-tabs__specification-{{ ai_gen_id }} h3,
+  .ai-product-tabs__specification-{{ ai_gen_id }} h4 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: {{ block.settings.content_heading_color }};
+  }
+
+  .ai-product-tabs__specification-{{ ai_gen_id }} ul,
+  .ai-product-tabs__specification-{{ ai_gen_id }} ol {
+    margin-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  .ai-product-tabs__specification-{{ ai_gen_id }} img {
+    max-width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    margin: 16px 0;
+  }
+
+  .ai-product-tabs__slider-container-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-product-tabs__slider-{{ ai_gen_id }} {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+  }
+
+  .ai-product-tabs__slider-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-product-tabs__product-card-{{ ai_gen_id }} {
+    flex: 0 0 calc(25% - 15px);
+    min-width: 250px;
+    background: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .ai-product-tabs__product-card-{{ ai_gen_id }}:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .ai-product-tabs__product-image-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .ai-product-tabs__product-image-{{ ai_gen_id }} img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-product-tabs__product-card-{{ ai_gen_id }}:hover .ai-product-tabs__product-image-{{ ai_gen_id }} img {
+    transform: scale(1.05);
+  }
+
+  .ai-product-tabs__product-info-{{ ai_gen_id }} {
+    padding: 16px;
+  }
+
+  .ai-product-tabs__product-title-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: {{ block.settings.card_text_color }};
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-product-tabs__product-price-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 700;
+    color: {{ block.settings.card_price_color }};
+    margin-bottom: 12px;
+  }
+
+  .ai-product-tabs__add-to-cart-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-product-tabs__add-to-cart-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-product-tabs__gallery-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .ai-product-tabs__gallery-item-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background: #f5f5f5;
+  }
+
+  .ai-product-tabs__gallery-item-{{ ai_gen_id }} img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-product-tabs__gallery-item-{{ ai_gen_id }}:hover img {
+    transform: scale(1.1);
+  }
+
+  .ai-product-tabs__nav-arrows-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .ai-product-tabs__arrow-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: {{ block.settings.arrow_background }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .ai-product-tabs__arrow-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.arrow_hover_background }};
+    transform: scale(1.1);
+  }
+
+  .ai-product-tabs__arrow-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ block.settings.arrow_color }};
+  }
+
+  .ai-product-tabs__loading-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-product-tabs__gallery-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-product-tabs__product-card-{{ ai_gen_id }} {
+      flex: 0 0 calc(50% - 10px);
+      min-width: 200px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-tabs-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-product-tabs__tab-button-{{ ai_gen_id }} {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+
+    .ai-product-tabs__gallery-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-product-tabs__product-card-{{ ai_gen_id }} {
+      flex: 0 0 calc(100% - 20px);
+      min-width: 280px;
+    }
+  }
+{% endstyle %}
+
+<product-tabs-{{ ai_gen_id }} class="ai-product-tabs-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-tabs__nav-{{ ai_gen_id }}">
+    {% if has_specification %}
+      <button class="ai-product-tabs__tab-button-{{ ai_gen_id }} active" data-tab="specification">
+        {{ block.settings.specification_tab_label }}
+      </button>
+    {% endif %}
+    
+    <button class="ai-product-tabs__tab-button-{{ ai_gen_id }} {% unless has_specification %}active{% endunless %}" data-tab="related">
+      {{ block.settings.related_tab_label }}
+    </button>
+    
+    {% if has_alternative_products %}
+      <button class="ai-product-tabs__tab-button-{{ ai_gen_id }}" data-tab="alternative">
+        {{ block.settings.alternative_tab_label }}
+      </button>
+    {% endif %}
+    
+    {% if has_product_images %}
+      <button class="ai-product-tabs__tab-button-{{ ai_gen_id }}" data-tab="images">
+        {{ block.settings.images_tab_label }}
+      </button>
+    {% endif %}
+  </div>
+
+  <div class="ai-product-tabs__content-{{ ai_gen_id }}">
+    {% if has_specification %}
+      <div class="ai-product-tabs__panel-{{ ai_gen_id }} active" data-panel="specification">
+        <div class="ai-product-tabs__specification-{{ ai_gen_id }}">
+          {{ product.metafields.custom.specification }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="ai-product-tabs__panel-{{ ai_gen_id }} {% unless has_specification %}active{% endunless %}" data-panel="related">
+      <div class="ai-product-tabs__loading-{{ ai_gen_id }}" data-loading>Loading recommendations...</div>
+      <div class="ai-product-tabs__slider-container-{{ ai_gen_id }}" data-related-container style="display: none;">
+        <div class="ai-product-tabs__slider-{{ ai_gen_id }}" data-related-slider></div>
+        <div class="ai-product-tabs__nav-arrows-{{ ai_gen_id }}">
+          <button class="ai-product-tabs__arrow-{{ ai_gen_id }}" data-arrow="prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="ai-product-tabs__arrow-{{ ai_gen_id }}" data-arrow="next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {% if has_alternative_products %}
+      <div class="ai-product-tabs__panel-{{ ai_gen_id }}" data-panel="alternative">
+        <div class="ai-product-tabs__slider-container-{{ ai_gen_id }}">
+          <div class="ai-product-tabs__slider-{{ ai_gen_id }}" data-alternative-slider>
+            {% for alt_product in product.metafields.custom.alternative_products limit: 4 %}
+              <div class="ai-product-tabs__product-card-{{ ai_gen_id }}">
+                <a href="{{ alt_product.url }}" class="ai-product-tabs__product-image-{{ ai_gen_id }}">
+                  {% if alt_product.featured_image %}
+                    <img src="{{ alt_product.featured_image | image_url: width: 500 }}" alt="{{ alt_product.featured_image.alt | escape }}" loading="lazy">
+                  {% else %}
+                    <div style="width: 100%; height: 100%; background: #f5f5f5;"></div>
+                  {% endif %}
+                </a>
+                <div class="ai-product-tabs__product-info-{{ ai_gen_id }}">
+                  <h3 class="ai-product-tabs__product-title-{{ ai_gen_id }}">
+                    <a href="{{ alt_product.url }}" style="text-decoration: none; color: inherit;">{{ alt_product.title }}</a>
+                  </h3>
+                  <div class="ai-product-tabs__product-price-{{ ai_gen_id }}">{{ alt_product.price | money }}</div>
+                  <button class="ai-product-tabs__add-to-cart-{{ ai_gen_id }}" data-product-id="{{ alt_product.id }}" data-variant-id="{{ alt_product.selected_or_first_available_variant.id }}">
+                    {{ block.settings.add_to_cart_label }}
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="ai-product-tabs__nav-arrows-{{ ai_gen_id }}">
+            <button class="ai-product-tabs__arrow-{{ ai_gen_id }}" data-arrow="prev-alt" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="ai-product-tabs__arrow-{{ ai_gen_id }}" data-arrow="next-alt" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if has_product_images %}
+      <div class="ai-product-tabs__panel-{{ ai_gen_id }}" data-panel="images">
+        <div class="ai-product-tabs__gallery-{{ ai_gen_id }}">
+          {% for image in product.metafields.custom.product_images %}
+            <div class="ai-product-tabs__gallery-item-{{ ai_gen_id }}">
+              <img src="{{ image | image_url: width: 600 }}" alt="{{ image.alt | escape }}" loading="lazy">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</product-tabs-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductTabs{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentProductId = {{ product.id | json }};
+      }
+
+      connectedCallback() {
+        this.tabButtons = this.querySelectorAll('.ai-product-tabs__tab-button-{{ ai_gen_id }}');
+        this.tabPanels = this.querySelectorAll('.ai-product-tabs__panel-{{ ai_gen_id }}');
+        this.relatedSlider = this.querySelector('[data-related-slider]');
+        this.relatedContainer = this.querySelector('[data-related-container]');
+        this.loadingIndicator = this.querySelector('[data-loading]');
+        
+        this.setupTabs();
+        this.setupSliders();
+        this.loadRelatedProducts();
+        this.setupAddToCart();
+      }
+
+      setupTabs() {
+        this.tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+            
+            this.tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.tabPanels.forEach(panel => panel.classList.remove('active'));
+            
+            button.classList.add('active');
+            const activePanel = this.querySelector(`[data-panel="${tabName}"]`);
+            if (activePanel) {
+              activePanel.classList.add('active');
+            }
+          });
+        });
+      }
+
+      setupSliders() {
+        const sliders = [
+          { slider: this.querySelector('[data-related-slider]'), prev: 'prev', next: 'next' },
+          { slider: this.querySelector('[data-alternative-slider]'), prev: 'prev-alt', next: 'next-alt' }
+        ];
+
+        sliders.forEach(({ slider, prev, next }) => {
+          if (!slider) return;
+
+          const prevBtn = this.querySelector(`[data-arrow="${prev}"]`);
+          const nextBtn = this.querySelector(`[data-arrow="${next}"]`);
+
+          if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+              slider.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+              slider.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+          }
+        });
+      }
+
+      async loadRelatedProducts() {
+        if (!this.relatedSlider) return;
+
+        try {
+          const response = await fetch(`/recommendations/products.json?product_id=${this.currentProductId}&limit=5`);
+          const data = await response.json();
+          
+          if (data.products && data.products.length > 0) {
+            const filteredProducts = data.products.filter(p => p.id !== this.currentProductId).slice(0, 4);
+            this.renderRelatedProducts(filteredProducts);
+          } else {
+            this.showNoRecommendations();
+          }
+        } catch (error) {
+          this.showNoRecommendations();
+        }
+      }
+
+      renderRelatedProducts(products) {
+        this.loadingIndicator.style.display = 'none';
+        this.relatedContainer.style.display = 'block';
+
+        this.relatedSlider.innerHTML = products.map(product => {
+          const variant = product.variants[0];
+          const imageUrl = product.featured_image ? product.featured_image : '';
+          
+          return `
+            <div class="ai-product-tabs__product-card-{{ ai_gen_id }}">
+              <a href="${product.url}" class="ai-product-tabs__product-image-{{ ai_gen_id }}">
+                ${imageUrl ? `<img src="${imageUrl}" alt="${product.title}" loading="lazy">` : '<div style="width: 100%; height: 100%; background: #f5f5f5;"></div>'}
+              </a>
+              <div class="ai-product-tabs__product-info-{{ ai_gen_id }}">
+                <h3 class="ai-product-tabs__product-title-{{ ai_gen_id }}">
+                  <a href="${product.url}" style="text-decoration: none; color: inherit;">${product.title}</a>
+                </h3>
+                <div class="ai-product-tabs__product-price-{{ ai_gen_id }}">${this.formatMoney(variant.price)}</div>
+                <button class="ai-product-tabs__add-to-cart-{{ ai_gen_id }}" data-product-id="${product.id}" data-variant-id="${variant.id}">
+                  {{ block.settings.add_to_cart_label }}
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        this.setupAddToCart();
+      }
+
+      showNoRecommendations() {
+        this.loadingIndicator.textContent = 'No recommendations available';
+      }
+
+      formatMoney(cents) {
+        const amount = cents / 100;
+        return new Intl.NumberFormat('{{ localization.language.iso_code }}', {
+          style: 'currency',
+          currency: '{{ cart.currency.iso_code }}'
+        }).format(amount);
+      }
+
+      setupAddToCart() {
+        const buttons = this.querySelectorAll('.ai-product-tabs__add-to-cart-{{ ai_gen_id }}');
+        
+        buttons.forEach(button => {
+          button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const variantId = button.getAttribute('data-variant-id');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Adding...';
+            button.disabled = true;
+
+            try {
+              const response = await fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  id: variantId,
+                  quantity: 1
+                })
+              });
+
+              if (response.ok) {
+                button.textContent = 'Added!';
+                setTimeout(() => {
+                  button.textContent = originalText;
+                  button.disabled = false;
+                }, 2000);
+
+                window.dispatchEvent(new CustomEvent('cart:refresh'));
+              } else {
+                throw new Error('Failed to add to cart');
+              }
+            } catch (error) {
+              button.textContent = 'Error';
+              setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+              }, 2000);
+            }
+          });
+        });
+      }
+    }
+
+    customElements.define('product-tabs-{{ ai_gen_id }}', ProductTabs{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Premium product tabs",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Tab labels"
+    },
+    {
+      "type": "text",
+      "id": "specification_tab_label",
+      "label": "Specification tab",
+      "default": "Specifications"
+    },
+    {
+      "type": "text",
+      "id": "related_tab_label",
+      "label": "Related products tab",
+      "default": "Related Products"
+    },
+    {
+      "type": "text",
+      "id": "alternative_tab_label",
+      "label": "Alternative products tab",
+      "default": "Alternative Products"
+    },
+    {
+      "type": "text",
+      "id": "images_tab_label",
+      "label": "Images tab",
+      "default": "Product Images"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart button",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "header",
+      "content": "Tab style"
+    },
+    {
+      "type": "range",
+      "id": "tab_font_size",
+      "label": "Tab font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "tab_active_color",
+      "label": "Active tab color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "tab_inactive_color",
+      "label": "Inactive tab color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Content style"
+    },
+    {
+      "type": "color",
+      "id": "content_text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "content_heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Product card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "card_price_color",
+      "label": "Price color",
+      "default": "#00a341"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#008a35"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Image style"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Navigation arrows"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Arrow background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_background",
+      "label": "Arrow hover background",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium product tabs"
+    }
+  ]
+}
 {% endschema %}
