@@ -161,6 +161,45 @@
         "input_text_color": ""
       }
     },
+    "1772731763453336a6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9757293_gfeHCX": {
+          "type": "ai_gen_block_9757293",
+          "settings": {
+            "desktop_width_percent": 100,
+            "section_padding": 40,
+            "specification_tab_label": "Specifications",
+            "related_tab_label": "Related Products",
+            "alternative_tab_label": "Alternative Products",
+            "images_tab_label": "Product Images",
+            "add_to_cart_label": "Add to Cart",
+            "tab_font_size": 16,
+            "tab_active_color": "#1a1a1a",
+            "tab_inactive_color": "#999999",
+            "content_text_color": "#1a1a1a",
+            "content_heading_color": "#000000",
+            "card_background": "#ffffff",
+            "card_text_color": "#1a1a1a",
+            "card_price_color": "#00a341",
+            "card_border_radius": 12,
+            "button_background": "#00a341",
+            "button_hover_background": "#008a35",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 8,
+            "image_border_radius": 8,
+            "arrow_background": "#f5f5f5",
+            "arrow_hover_background": "#e0e0e0",
+            "arrow_color": "#1a1a1a"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9757293_gfeHCX"
+      ],
+      "settings": {}
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -282,6 +321,7 @@
   },
   "order": [
     "main",
+    "1772731763453336a6",
     "related-products",
     "17586352420addd915",
     "faq_xpQND9"
