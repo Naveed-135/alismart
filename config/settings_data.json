@@ -116,7 +116,7 @@
           "renderer": "5",
           "css_selector": ".header__secondary-nav",
           "insert": "prepend",
-          "base_value": "0",
+          "base_value": "1",
           "vat": 20,
           "switcherInactiveColor": "#e3e3e3",
           "switcherActiveColor": "#00a634",
