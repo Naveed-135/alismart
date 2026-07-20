@@ -75,16 +75,9 @@
         "ai_gen_block_7609748_G6afbb": {
           "type": "ai_gen_block_7609748",
           "settings": {
-            "brand_collections_1": [
-              "adc",
-              "anthem"
-            ],
-            "brand_collections_2": [
-              "awdis"
-            ],
-            "brand_collections_3": [
-              "port-west"
-            ],
+            "brand_collections_1": [],
+            "brand_collections_2": [],
+            "brand_collections_3": [],
             "page_title": "All Brands",
             "page_subtitle": "Explore our complete collection of brands",
             "title_size": 48,
