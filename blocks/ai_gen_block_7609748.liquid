@@ -353,7 +353,8 @@
 {% assign list1 = block.settings.brand_collections_1 | default: empty_array %}
 {% assign list2 = block.settings.brand_collections_2 | default: empty_array %}
 {% assign list3 = block.settings.brand_collections_3 | default: empty_array %}
-{% assign selected_collections = list1 | concat: list2 | concat: list3 %}
+{% assign combined_collections = list1 | concat: list2 | concat: list3 %}
+{% assign selected_collections = combined_collections | uniq %}
     
     {% if selected_collections.size > 0 %}
       {% if block.settings.show_search %}
