@@ -349,7 +349,11 @@
       {% endif %}
     </div>
 
-   {% assign selected_collections = block.settings.brand_collections_1 | concat: block.settings.brand_collections_2 | concat: block.settings.brand_collections_3 %}
+   {% assign empty_array = '' | split: ',' %}
+{% assign list1 = block.settings.brand_collections_1 | default: empty_array %}
+{% assign list2 = block.settings.brand_collections_2 | default: empty_array %}
+{% assign list3 = block.settings.brand_collections_3 | default: empty_array %}
+{% assign selected_collections = list1 | concat: list2 | concat: list3 %}
     
     {% if selected_collections.size > 0 %}
       {% if block.settings.show_search %}
