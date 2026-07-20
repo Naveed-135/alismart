@@ -349,7 +349,7 @@
       {% endif %}
     </div>
 
-    {% assign selected_collections = block.settings.brand_collections %}
+   {% assign selected_collections = block.settings.brand_collections_1 | concat: block.settings.brand_collections_2 | concat: block.settings.brand_collections_3 %}
     
     {% if selected_collections.size > 0 %}
       {% if block.settings.show_search %}
@@ -614,15 +614,29 @@
   "name": "All brands page",
   "tag": null,
   "settings": [
-    {
-      "type": "header",
-      "content": "Brand collections"
-    },
-    {
-      "type": "collection_list",
-      "id": "brand_collections",
-      "label": "Select brand collections"
-    },
+   {
+  "type": "header",
+  "content": "Brand collections"
+},
+{
+  "type": "paragraph",
+  "content": "Select up to 50 collections per list below. Add collections across all 3 lists for up to 150 total."
+},
+{
+  "type": "collection_list",
+  "id": "brand_collections_1",
+  "label": "Brand collections (Part 1)"
+},
+{
+  "type": "collection_list",
+  "id": "brand_collections_2",
+  "label": "Brand collections (Part 2)"
+},
+{
+  "type": "collection_list",
+  "id": "brand_collections_3",
+  "label": "Brand collections (Part 3)"
+},
     {
       "type": "header",
       "content": "Page content"
