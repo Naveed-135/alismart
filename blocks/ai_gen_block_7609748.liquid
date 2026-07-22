@@ -987,15 +987,12 @@
 
 
 
-
-
-
 {% doc %}
   @prompt
-    All Brands page. Automatic tag-based collection detection (tag: brand-page,
-    configurable) PLUS an optional manual "Extra collections" list (max 50)
-    for one-off cases. Uses a safe loop-based merge (no concat/uniq — those
-    were unreliable with Shopify's collection_list setting type).
+    All Brands page. Tag-based automatic detection + optional manual "Extra
+    collections" list. Letter-grouping restructured so every div opens and
+    closes within the same loop iteration (fixes theme-check "unclosed html
+    element" error caused by the old cross-iteration div split).
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
@@ -1329,10 +1326,12 @@
         </div>
       {% endif %}
 
+      {% assign letters_all = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: "" %}
+      {% assign sorted_collections = selected_collections | sort: 'title' %}
+
       {% if block.settings.show_az_nav %}
         <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation" data-az-nav>
-          {% assign letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: "" %}
-          {% for letter_char in letters %}
+          {% for letter_char in letters_all %}
             <a
               href="#letter-{{ letter_char | downcase }}"
               class="ai-brands-az-letter-{{ ai_gen_id }}"
@@ -1346,56 +1345,94 @@
       {% endif %}
 
       <div class="ai-brands-content-{{ ai_gen_id }}" data-brands-content>
-        {% assign sorted_collections = selected_collections | sort: 'title' %}
-        {% assign current_letter = '' %}
-
-        {% for collection in sorted_collections %}
-          {% assign first_char = collection.title | slice: 0 | upcase %}
-          {% assign is_letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | split: '' | where: first_char %}
-
-          {% if is_letter.size > 0 %}
-            {% assign collection_letter = first_char %}
-          {% else %}
-            {% assign collection_letter = '#' %}
-          {% endif %}
-
-          {% if collection_letter != current_letter %}
-            {% if current_letter != '' %}
-              </div></div>
+        {% comment %} Each letter section is fully self-contained in one loop pass — no cross-iteration div splitting {% endcomment %}
+        {% for letter_char in letters_all %}
+          {% assign letter_has_items = false %}
+          {% for collection in sorted_collections %}
+            {% assign first_char = collection.title | slice: 0 | upcase %}
+            {% if first_char == letter_char %}
+              {% assign letter_has_items = true %}
             {% endif %}
+          {% endfor %}
 
-            <div class="ai-brands-alphabet-section-{{ ai_gen_id }}" data-letter-section="{{ collection_letter }}">
-              <h2 class="ai-brands-alphabet-heading-{{ ai_gen_id }}" id="letter-{{ collection_letter | downcase }}">{{ collection_letter }}</h2>
+          {% if letter_has_items %}
+            <div class="ai-brands-alphabet-section-{{ ai_gen_id }}" data-letter-section="{{ letter_char }}">
+              <h2 class="ai-brands-alphabet-heading-{{ ai_gen_id }}" id="letter-{{ letter_char | downcase }}">{{ letter_char }}</h2>
               <div class="ai-brands-grid-{{ ai_gen_id }}">
-
-            {% assign current_letter = collection_letter %}
+                {% for collection in sorted_collections %}
+                  {% assign first_char = collection.title | slice: 0 | upcase %}
+                  {% if first_char == letter_char %}
+                    <a href="{{ collection.url }}" class="ai-brands-card-{{ ai_gen_id }}" data-brand-card data-brand-name="{{ collection.title }}">
+                      <div class="ai-brands-card-image-wrapper-{{ ai_gen_id }}">
+                        {% if collection.featured_image %}
+                          <img
+                            src="{{ collection.featured_image | image_url: width: 400 }}"
+                            alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
+                            class="ai-brands-card-image-{{ ai_gen_id }}"
+                            loading="lazy"
+                            width="400"
+                            height="400"
+                          >
+                        {% else %}
+                          <div class="ai-brands-card-placeholder-{{ ai_gen_id }}">
+                            {{ 'collection-1' | placeholder_svg_tag }}
+                          </div>
+                        {% endif %}
+                      </div>
+                      <div class="ai-brands-card-content-{{ ai_gen_id }}">
+                        <h3 class="ai-brands-card-title-{{ ai_gen_id }}">{{ collection.title }}</h3>
+                      </div>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
           {% endif %}
-
-          <a href="{{ collection.url }}" class="ai-brands-card-{{ ai_gen_id }}" data-brand-card data-brand-name="{{ collection.title }}">
-            <div class="ai-brands-card-image-wrapper-{{ ai_gen_id }}">
-              {% if collection.featured_image %}
-                <img
-                  src="{{ collection.featured_image | image_url: width: 400 }}"
-                  alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
-                  class="ai-brands-card-image-{{ ai_gen_id }}"
-                  loading="lazy"
-                  width="400"
-                  height="400"
-                >
-              {% else %}
-                <div class="ai-brands-card-placeholder-{{ ai_gen_id }}">
-                  {{ 'collection-1' | placeholder_svg_tag }}
-                </div>
-              {% endif %}
-            </div>
-            <div class="ai-brands-card-content-{{ ai_gen_id }}">
-              <h3 class="ai-brands-card-title-{{ ai_gen_id }}">{{ collection.title }}</h3>
-            </div>
-          </a>
         {% endfor %}
 
-        {% if current_letter != '' %}
-          </div></div>
+        {% comment %} Collections whose title doesn't start with A-Z go under '#' {% endcomment %}
+        {% assign hash_has_items = false %}
+        {% for collection in sorted_collections %}
+          {% assign first_char = collection.title | slice: 0 | upcase %}
+          {% assign is_letter_match = letters_all | where: first_char %}
+          {% if is_letter_match.size == 0 %}
+            {% assign hash_has_items = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if hash_has_items %}
+          <div class="ai-brands-alphabet-section-{{ ai_gen_id }}" data-letter-section="#">
+            <h2 class="ai-brands-alphabet-heading-{{ ai_gen_id }}" id="letter-hash">#</h2>
+            <div class="ai-brands-grid-{{ ai_gen_id }}">
+              {% for collection in sorted_collections %}
+                {% assign first_char = collection.title | slice: 0 | upcase %}
+                {% assign is_letter_match = letters_all | where: first_char %}
+                {% if is_letter_match.size == 0 %}
+                  <a href="{{ collection.url }}" class="ai-brands-card-{{ ai_gen_id }}" data-brand-card data-brand-name="{{ collection.title }}">
+                    <div class="ai-brands-card-image-wrapper-{{ ai_gen_id }}">
+                      {% if collection.featured_image %}
+                        <img
+                          src="{{ collection.featured_image | image_url: width: 400 }}"
+                          alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
+                          class="ai-brands-card-image-{{ ai_gen_id }}"
+                          loading="lazy"
+                          width="400"
+                          height="400"
+                        >
+                      {% else %}
+                        <div class="ai-brands-card-placeholder-{{ ai_gen_id }}">
+                          {{ 'collection-1' | placeholder_svg_tag }}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="ai-brands-card-content-{{ ai_gen_id }}">
+                      <h3 class="ai-brands-card-title-{{ ai_gen_id }}">{{ collection.title }}</h3>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         {% endif %}
       </div>
     {% else %}
