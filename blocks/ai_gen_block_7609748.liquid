@@ -1001,9 +1001,17 @@
   @prompt
     Create a modern "All Brands" page for a Shopify store using Collections as Brands (not vendors).
 
-    The page should support hundreds or thousands of brand collections (1000+) and automatically display only the collections that actually exist.
+    AUTOMATIC APPROACH (v2): Instead of manually selecting collections in the
+    theme editor (which is capped at 50 per field and caused editor
+    glitches when using multiple collection_list fields), this version
+    auto-detects "brand" collections by tag. Tag any collection with the
+    configured tag (default: brand-page) in Shopify Admin and it will
+    automatically appear here — no theme editor changes needed, no limit
+    on count, no multi-field bugs.
 
-    Search, A-Z navigation, grid layout, 150-collection support via 3 collection_list settings (50 each), duplicate removal via uniq.
+    An optional manual "extra collections" list (max 50) is kept for edge
+    cases where tagging isn't convenient. Tagged + manual are merged and
+    deduplicated.
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
@@ -1279,16 +1287,37 @@
       {% endif %}
     </div>
 
+    {% comment %} ===== AUTOMATIC TAG-BASED COLLECTION DETECTION ===== {% endcomment %}
     {% assign empty_array = '' | split: ',' %}
-    {% assign list1 = block.settings.brand_collections_1 | default: empty_array %}
-    {% assign list2 = block.settings.brand_collections_2 | default: empty_array %}
-    {% assign list3 = block.settings.brand_collections_3 | default: empty_array %}
-    {% assign combined_collections = list1 | concat: list2 | concat: list3 %}
+    {% assign brand_tag = block.settings.brand_tag | strip | downcase %}
+    {% assign tagged_collections = empty_array %}
+
+    {% for collection in collections.all %}
+      {% assign is_brand_collection = false %}
+   {% for tag in collection.tags %}
+  {% assign tag_downcase = tag | downcase %}
+  {% if tag_downcase == brand_tag %}
+    {% assign is_brand_collection = true %}
+  {% endif %}
+{% endfor %}
+
+
+
+      {% if is_brand_collection %}
+        {% assign tagged_collections = tagged_collections | push: collection %}
+      {% endif %}
+    {% endfor %}
+
+    {% comment %} ===== OPTIONAL MANUAL EXTRAS (for edge cases, max 50) ===== {% endcomment %}
+    {% assign manual_collections = block.settings.extra_collections | default: empty_array %}
+
+    {% comment %} ===== MERGE + DEDUPLICATE ===== {% endcomment %}
+    {% assign combined_collections = tagged_collections | concat: manual_collections %}
     {% assign selected_collections = combined_collections | uniq %}
 
     {% if block.settings.show_debug %}
       <div class="ai-brands-debug-{{ ai_gen_id }}">
-        DEBUG → Part1: {{ list1.size }} | Part2: {{ list2.size }} | Part3: {{ list3.size }} | Combined: {{ combined_collections.size }} | After uniq: {{ selected_collections.size }}
+        DEBUG → Tag used: "{{ brand_tag }}" | Tagged collections found: {{ tagged_collections.size }} | Manual extras: {{ manual_collections.size }} | Total after dedupe: {{ selected_collections.size }}
       </div>
     {% endif %}
 
@@ -1380,7 +1409,7 @@
       </div>
     {% else %}
       <div class="ai-brands-empty-state-{{ ai_gen_id }}">
-        Please select brand collections to display
+        No brand collections found. Add the tag "{{ brand_tag }}" to a collection in Shopify Admin, or select collections manually in "Extra collections" below.
       </div>
     {% endif %}
   </div>
@@ -1514,26 +1543,31 @@
   "settings": [
     {
       "type": "header",
-      "content": "Brand collections"
+      "content": "Automatic brand detection"
     },
     {
       "type": "paragraph",
-      "content": "Select up to 50 collections per list below. Add collections across all 3 lists for up to 150 total. Avoid selecting the same collection in more than one list."
+      "content": "Any collection tagged with the value below in Shopify Admin will automatically appear on this page. No theme editor changes needed — just add the tag to the collection and it shows up instantly. Supports unlimited collections (1000+)."
+    },
+    {
+      "type": "text",
+      "id": "brand_tag",
+      "label": "Tag that marks a collection as a brand",
+      "default": "brand-page",
+      "info": "Go to Shopify Admin > Products > Collections > (open a collection) > Tags, and add this exact tag to make it appear here."
+    },
+    {
+      "type": "header",
+      "content": "Extra collections (optional, manual, max 50)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Use this only for one-off collections you don't want to tag. Anything already tagged above does not need to be added here."
     },
     {
       "type": "collection_list",
-      "id": "brand_collections_1",
-      "label": "Brand collections (Part 1)"
-    },
-    {
-      "type": "collection_list",
-      "id": "brand_collections_2",
-      "label": "Brand collections (Part 2)"
-    },
-    {
-      "type": "collection_list",
-      "id": "brand_collections_3",
-      "label": "Brand collections (Part 3)"
+      "id": "extra_collections",
+      "label": "Extra collections"
     },
     {
       "type": "checkbox",
