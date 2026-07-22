@@ -84,8 +84,12 @@
               "result",
               "result-core"
             ],
-            "brand_collections_2": [],
+            "brand_collections_2": [
+              "adc",
+              "adjustable-restraint-lanyards"
+            ],
             "brand_collections_3": [],
+            "show_debug": false,
             "page_title": "All Brands",
             "page_subtitle": "Explore our complete collection of brands",
             "title_size": 48,
