@@ -1308,12 +1308,21 @@
       {% endif %}
     {% endfor %}
 
-    {% comment %} ===== OPTIONAL MANUAL EXTRAS (for edge cases, max 50) ===== {% endcomment %}
-    {% assign manual_collections = block.settings.extra_collections | default: empty_array %}
+  {% comment %} ===== MERGE EXTRA (MANUAL) COLLECTIONS, SKIPPING DUPLICATES ===== {% endcomment %}
+{% assign selected_collections = tagged_collections %}
+{% assign manual_collections = block.settings.extra_collections %}
 
-    {% comment %} ===== MERGE + DEDUPLICATE ===== {% endcomment %}
-    {% assign combined_collections = tagged_collections | concat: manual_collections %}
-    {% assign selected_collections = combined_collections | uniq %}
+{% for collection in manual_collections %}
+  {% assign already_included = false %}
+  {% for existing in selected_collections %}
+    {% if existing.id == collection.id %}
+      {% assign already_included = true %}
+    {% endif %}
+  {% endfor %}
+  {% if already_included == false %}
+    {% assign selected_collections = selected_collections | push: collection %}
+  {% endif %}
+{% endfor %}
 
     {% if block.settings.show_debug %}
       <div class="ai-brands-debug-{{ ai_gen_id }}">
