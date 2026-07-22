@@ -1,4 +1,4 @@
-{% doc %}
+{% comment %} {% doc %}
   @prompt
     Create a modern “All Brands” page for a Shopify store using Collections as Brands (not vendors).
     
@@ -642,6 +642,905 @@
   "id": "brand_collections_3",
   "label": "Brand collections (Part 3)"
 },
+    {
+      "type": "header",
+      "content": "Page content"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title",
+      "default": "All Brands"
+    },
+    {
+      "type": "text",
+      "id": "page_subtitle",
+      "label": "Page subtitle",
+      "default": "Explore our complete collection of brands"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search brands..."
+    },
+    {
+      "type": "color",
+      "id": "search_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "search_border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "search_focus_color",
+      "label": "Focus border",
+      "default": "#00a341"
+    },
+    {
+      "type": "range",
+      "id": "search_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "A-Z navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_az_nav",
+      "label": "Show A-Z navigation",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "az_nav_bg_color",
+      "label": "Navigation background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "az_letter_bg",
+      "label": "Letter background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "az_letter_color",
+      "label": "Letter text",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "az_letter_hover_bg",
+      "label": "Letter hover background",
+      "default": "#00a341"
+    },
+    {
+      "type": "color",
+      "id": "az_letter_hover_color",
+      "label": "Letter hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "az_nav_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Navigation border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "az_letter_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Letter border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Alphabet sections"
+    },
+    {
+      "type": "range",
+      "id": "alphabet_heading_size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "alphabet_heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "alphabet_border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Brand cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "image_aspect_ratio",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Image aspect ratio",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "image_placeholder_bg",
+      "label": "Image placeholder background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on tablet",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on mobile",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "All brands page"
+    }
+  ]
+}
+{% endschema %} {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% doc %}
+  @prompt
+    Create a modern "All Brands" page for a Shopify store using Collections as Brands (not vendors).
+
+    The page should support hundreds or thousands of brand collections (1000+) and automatically display only the collections that actually exist.
+
+    Search, A-Z navigation, grid layout, 150-collection support via 3 collection_list settings (50 each), duplicate removal via uniq.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-brands-page-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-brands-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-brands-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-brands-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 16px;
+    font-weight: 700;
+  }
+
+  .ai-brands-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-brands-debug-{{ ai_gen_id }} {
+    background: #fff59d;
+    border: 2px dashed #f9a825;
+    color: #333;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: monospace;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .ai-brands-search-wrapper-{{ ai_gen_id }} {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  .ai-brands-search-input-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    border: 2px solid {{ block.settings.search_border_color }};
+    border-radius: {{ block.settings.search_border_radius }}px;
+    background-color: {{ block.settings.search_bg_color }};
+    color: {{ block.settings.text_color }};
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-brands-search-input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.search_focus_color }};
+  }
+
+  .ai-brands-search-icon-{{ ai_gen_id }} {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: {{ block.settings.text_color }};
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .ai-brands-az-nav-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: {{ block.settings.az_nav_bg_color }};
+    border-radius: {{ block.settings.az_nav_border_radius }}px;
+  }
+
+  .ai-brands-az-letter-{{ ai_gen_id }} {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.az_letter_color }};
+    background-color: {{ block.settings.az_letter_bg }};
+    border-radius: {{ block.settings.az_letter_border_radius }}px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+
+  .ai-brands-az-letter-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.az_letter_hover_bg }};
+    color: {{ block.settings.az_letter_hover_color }};
+    transform: translateY(-2px);
+  }
+
+  .ai-brands-az-letter-{{ ai_gen_id }}.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .ai-brands-alphabet-section-{{ ai_gen_id }} {
+    margin-bottom: 60px;
+  }
+
+  .ai-brands-alphabet-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.alphabet_heading_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.alphabet_heading_color }};
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid {{ block.settings.alphabet_border_color }};
+    scroll-margin-top: 100px;
+  }
+
+  .ai-brands-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-brands-card-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid {{ block.settings.card_border_color }};
+  }
+
+  .ai-brands-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .ai-brands-card-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-top: {{ block.settings.image_aspect_ratio }}%;
+    overflow: hidden;
+    background-color: {{ block.settings.image_placeholder_bg }};
+  }
+
+  .ai-brands-card-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-brands-card-{{ ai_gen_id }}:hover .ai-brands-card-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-brands-card-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.image_placeholder_bg }};
+  }
+
+  .ai-brands-card-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  .ai-brands-card-content-{{ ai_gen_id }} {
+    padding: {{ block.settings.card_padding }}px;
+    text-align: center;
+  }
+
+  .ai-brands-card-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.card_title_color }};
+    margin: 0;
+  }
+
+  .ai-brands-no-results-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: {{ block.settings.text_color }};
+    font-size: 18px;
+  }
+
+  .ai-brands-empty-state-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: {{ block.settings.text_color }};
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+
+    .ai-brands-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+
+    .ai-brands-alphabet-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.alphabet_heading_size }}px * 0.85);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-brands-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-brands-az-nav-{{ ai_gen_id }} {
+      gap: 6px;
+      padding: 15px;
+    }
+
+    .ai-brands-az-letter-{{ ai_gen_id }} {
+      min-width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    .ai-brands-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.7);
+    }
+
+    .ai-brands-alphabet-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.alphabet_heading_size }}px * 0.75);
+    }
+
+    .ai-brands-card-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.card_title_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<all-brands-page-{{ ai_gen_id }} class="ai-brands-page-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-brands-container-{{ ai_gen_id }}">
+    <div class="ai-brands-header-{{ ai_gen_id }}">
+      {% if block.settings.page_title != blank %}
+        <h1 class="ai-brands-title-{{ ai_gen_id }}">{{ block.settings.page_title }}</h1>
+      {% endif %}
+      {% if block.settings.page_subtitle != blank %}
+        <p class="ai-brands-subtitle-{{ ai_gen_id }}">{{ block.settings.page_subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {% assign empty_array = '' | split: ',' %}
+    {% assign list1 = block.settings.brand_collections_1 | default: empty_array %}
+    {% assign list2 = block.settings.brand_collections_2 | default: empty_array %}
+    {% assign list3 = block.settings.brand_collections_3 | default: empty_array %}
+    {% assign combined_collections = list1 | concat: list2 | concat: list3 %}
+    {% assign selected_collections = combined_collections | uniq %}
+
+    {% if block.settings.show_debug %}
+      <div class="ai-brands-debug-{{ ai_gen_id }}">
+        DEBUG → Part1: {{ list1.size }} | Part2: {{ list2.size }} | Part3: {{ list3.size }} | Combined: {{ combined_collections.size }} | After uniq: {{ selected_collections.size }}
+      </div>
+    {% endif %}
+
+    {% if selected_collections.size > 0 %}
+      {% if block.settings.show_search %}
+        <div class="ai-brands-search-wrapper-{{ ai_gen_id }}">
+          <input
+            type="text"
+            class="ai-brands-search-input-{{ ai_gen_id }}"
+            placeholder="{{ block.settings.search_placeholder }}"
+            aria-label="Search brands"
+            data-search-input
+          >
+          <svg class="ai-brands-search-icon-{{ ai_gen_id }}" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="2"/>
+            <path d="M13 13L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_az_nav %}
+        <nav class="ai-brands-az-nav-{{ ai_gen_id }}" aria-label="Alphabetical navigation" data-az-nav>
+          {% assign letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: "" %}
+          {% for letter_char in letters %}
+            <a
+              href="#letter-{{ letter_char | downcase }}"
+              class="ai-brands-az-letter-{{ ai_gen_id }}"
+              data-letter="{{ letter_char }}"
+              aria-label="Jump to brands starting with {{ letter_char }}"
+            >
+              {{ letter_char }}
+            </a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      <div class="ai-brands-content-{{ ai_gen_id }}" data-brands-content>
+        {% assign sorted_collections = selected_collections | sort: 'title' %}
+        {% assign current_letter = '' %}
+
+        {% for collection in sorted_collections %}
+          {% assign first_char = collection.title | slice: 0 | upcase %}
+          {% assign is_letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | split: '' | where: first_char %}
+
+          {% if is_letter.size > 0 %}
+            {% assign collection_letter = first_char %}
+          {% else %}
+            {% assign collection_letter = '#' %}
+          {% endif %}
+
+          {% if collection_letter != current_letter %}
+            {% if current_letter != '' %}
+              </div></div>
+            {% endif %}
+
+            <div class="ai-brands-alphabet-section-{{ ai_gen_id }}" data-letter-section="{{ collection_letter }}">
+              <h2 class="ai-brands-alphabet-heading-{{ ai_gen_id }}" id="letter-{{ collection_letter | downcase }}">{{ collection_letter }}</h2>
+              <div class="ai-brands-grid-{{ ai_gen_id }}">
+
+            {% assign current_letter = collection_letter %}
+          {% endif %}
+
+          <a href="{{ collection.url }}" class="ai-brands-card-{{ ai_gen_id }}" data-brand-card data-brand-name="{{ collection.title }}">
+            <div class="ai-brands-card-image-wrapper-{{ ai_gen_id }}">
+              {% if collection.featured_image %}
+                <img
+                  src="{{ collection.featured_image | image_url: width: 400 }}"
+                  alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
+                  class="ai-brands-card-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                >
+              {% else %}
+                <div class="ai-brands-card-placeholder-{{ ai_gen_id }}">
+                  {{ 'collection-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-brands-card-content-{{ ai_gen_id }}">
+              <h3 class="ai-brands-card-title-{{ ai_gen_id }}">{{ collection.title }}</h3>
+            </div>
+          </a>
+        {% endfor %}
+
+        {% if current_letter != '' %}
+          </div></div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="ai-brands-empty-state-{{ ai_gen_id }}">
+        Please select brand collections to display
+      </div>
+    {% endif %}
+  </div>
+</all-brands-page-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AllBrandsPage{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.searchInput = this.querySelector('[data-search-input]');
+        this.brandsContent = this.querySelector('[data-brands-content]');
+        this.azNav = this.querySelector('[data-az-nav]');
+        this.azLetters = this.querySelectorAll('.ai-brands-az-letter-{{ ai_gen_id }}');
+        this.allCards = this.querySelectorAll('[data-brand-card]');
+        this.allSections = this.querySelectorAll('[data-letter-section]');
+        this.searchTimeout = null;
+      }
+
+      connectedCallback() {
+        this.setupEventListeners();
+        this.updateAZNavigation();
+      }
+
+      setupEventListeners() {
+        if (this.searchInput) {
+          this.searchInput.addEventListener('input', (e) => {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+              this.filterBrands(e.target.value);
+            }, 300);
+          });
+        }
+
+        this.azLetters.forEach(letter => {
+          letter.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetLetter = letter.getAttribute('data-letter');
+            const targetSection = this.querySelector(`#letter-${targetLetter.toLowerCase()}`);
+            if (targetSection && !letter.classList.contains('disabled')) {
+              targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+      }
+
+      filterBrands(searchTerm) {
+        const term = searchTerm.toLowerCase().trim();
+
+        if (!term) {
+          this.allCards.forEach(card => card.style.display = '');
+          this.allSections.forEach(section => section.style.display = '');
+          this.updateAZNavigation();
+          return;
+        }
+
+        let hasResults = false;
+        const visibleLetters = new Set();
+
+        this.allCards.forEach(card => {
+          const brandName = card.getAttribute('data-brand-name').toLowerCase();
+          if (brandName.includes(term)) {
+            card.style.display = '';
+            hasResults = true;
+            const section = card.closest('[data-letter-section]');
+            if (section) {
+              const letter = section.getAttribute('data-letter-section');
+              visibleLetters.add(letter);
+            }
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        this.allSections.forEach(section => {
+          const visibleCardsInSection = Array.from(section.querySelectorAll('[data-brand-card]')).filter(
+            card => card.style.display !== 'none'
+          );
+
+          if (visibleCardsInSection.length > 0) {
+            section.style.display = '';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        if (!hasResults) {
+          const noResults = this.brandsContent.querySelector('.ai-brands-no-results-{{ ai_gen_id }}');
+          if (!noResults) {
+            const div = document.createElement('div');
+            div.className = 'ai-brands-no-results-{{ ai_gen_id }}';
+            div.textContent = 'No brands found matching your search.';
+            this.brandsContent.appendChild(div);
+          }
+        } else {
+          const noResults = this.brandsContent.querySelector('.ai-brands-no-results-{{ ai_gen_id }}');
+          if (noResults) {
+            noResults.remove();
+          }
+        }
+
+        this.updateAZNavigation(Array.from(visibleLetters));
+      }
+
+      updateAZNavigation(activeLetters = null) {
+        if (!this.azNav) return;
+
+        const availableLetters = activeLetters || Array.from(this.allSections).map(
+          section => section.getAttribute('data-letter-section')
+        );
+
+        this.azLetters.forEach(letterEl => {
+          const letter = letterEl.getAttribute('data-letter');
+          if (availableLetters.includes(letter)) {
+            letterEl.classList.remove('disabled');
+          } else {
+            letterEl.classList.add('disabled');
+          }
+        });
+      }
+    }
+
+    customElements.define('all-brands-page-{{ ai_gen_id }}', AllBrandsPage{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "All brands page",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand collections"
+    },
+    {
+      "type": "paragraph",
+      "content": "Select up to 50 collections per list below. Add collections across all 3 lists for up to 150 total. Avoid selecting the same collection in more than one list."
+    },
+    {
+      "type": "collection_list",
+      "id": "brand_collections_1",
+      "label": "Brand collections (Part 1)"
+    },
+    {
+      "type": "collection_list",
+      "id": "brand_collections_2",
+      "label": "Brand collections (Part 2)"
+    },
+    {
+      "type": "collection_list",
+      "id": "brand_collections_3",
+      "label": "Brand collections (Part 3)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_debug",
+      "label": "Show debug counter (temporary — turn off after testing)",
+      "default": false
+    },
     {
       "type": "header",
       "content": "Page content"
