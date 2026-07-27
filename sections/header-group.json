@@ -246,7 +246,7 @@
           "settings": {
             "brand_tag": "brand-page",
             "extra_collections": [],
-            "show_debug": true,
+            "show_debug": false,
             "max_width": 1200,
             "background_color": "#ffffff",
             "section_padding_top": 50,
