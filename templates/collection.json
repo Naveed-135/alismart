@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -53,6 +54,7 @@
       "block_order": [
         "promotion_image_qdz9TE"
       ],
+      "disabled": true,
       "settings": {
         "products_per_page": 48,
         "products_per_row_mobile": "2",

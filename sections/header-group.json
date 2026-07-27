@@ -234,7 +234,6 @@
       "block_order": [
         "ai_gen_block_7609748_tWWWbT"
       ],
-      "disabled": true,
       "name": "All brands page",
       "settings": {}
     },
@@ -325,6 +324,7 @@
       "block_order": [
         "ai_gen_block_0557221_xQkD4D"
       ],
+      "disabled": true,
       "settings": {}
     }
   },
