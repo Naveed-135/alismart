@@ -75,21 +75,9 @@
         "ai_gen_block_7609748_G6afbb": {
           "type": "ai_gen_block_7609748",
           "settings": {
-            "brand_collections_1": [
-              "port-west",
-              "supertouch",
-              "fruit-of-the-loom",
-              "jcb",
-              "dunlop",
-              "result",
-              "result-core"
-            ],
-            "brand_collections_2": [
-              "adc",
-              "adjustable-restraint-lanyards"
-            ],
-            "brand_collections_3": [],
-            "show_debug": false,
+            "brand_tag": "brand-page",
+            "extra_collections": [],
+            "show_debug": true,
             "page_title": "All Brands",
             "page_subtitle": "Explore our complete collection of brands",
             "title_size": 48,

@@ -135,7 +135,7 @@
         "ai_gen_block_7609748_tWWWbT": {
           "type": "ai_gen_block_7609748",
           "settings": {
-            "brand_tag": "brand-page",
+            "brand_tag": "",
             "extra_collections": [
               "adc",
               "anthem",
@@ -245,8 +245,10 @@
           "type": "ai_gen_block_0557221",
           "settings": {
             "brand_tag": "brand-page",
-            "extra_collections": [],
-            "show_debug": false,
+            "extra_collections": [
+              "adc"
+            ],
+            "show_debug": true,
             "max_width": 1200,
             "background_color": "#ffffff",
             "section_padding_top": 50,
@@ -260,7 +262,7 @@
             "title_margin": 20,
             "header_spacing": 40,
             "show_search": true,
-            "search_placeholder": "Search brands...",
+            "search_placeholder": "Search brands...kjjj",
             "search_max_width": 500,
             "search_padding": 12,
             "search_font_size": 16,
