@@ -135,6 +135,9 @@
         "ai_gen_block_7609748_tWWWbT": {
           "type": "ai_gen_block_7609748",
           "settings": {
+            "excluded_collections": [
+              "adc"
+            ],
             "show_debug": true,
             "page_title": "All Brands",
             "page_subtitle": "Explore our complete collection of brands",
