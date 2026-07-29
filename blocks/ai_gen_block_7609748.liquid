@@ -1,22 +1,11 @@
 {% doc %}
   @prompt
-    New brand section (v6). CORRECTED APPROACH: earlier versions assumed
-    `collections.all` returns every collection in the store — it does not.
-    `collections.all` is a special pseudo-collection representing every
-    PRODUCT in the store, not a list of Collection objects. Shopify's
-    Liquid has no built-in global that enumerates all collections.
-
-    The Shopify-supported way to reference an admin-managed, unlimited list
-    of collections from Liquid is a Navigation Menu (linklist). The
-    merchant creates a menu in Admin > Content > Menus, adds one menu item
-    per brand collection (no 50-item practical limit like collection_list),
-    and this section reads that menu via `linklists[handle]`.
-
-    An optional manual `collection_list` field (capped at 50 by Shopify)
-    is kept for quick one-offs. Merging still uses the plain
-    delimited-string technique (capture + split + sort + uniq), which is
-    the only approach that proved reliable for combining multiple sources
-    on this store. Letter-grouping keeps each section's HTML fully
+    New brand section (v7). Three manual collection_list fields
+    (extra_collections_1/2/3, each capped at 50 by Shopify = 150 total),
+    merged using the plain delimited-string technique (capture + split +
+    sort + uniq) that proved reliable on this store — not push/concat/uniq
+    on arrays of collection objects, which silently returned empty
+    results. Letter-grouping keeps each section's HTML fully
     self-contained within one loop pass (avoids theme-check's unclosed
     element error).
 {% enddoc %}
@@ -294,39 +283,29 @@
       {% endif %}
     </div>
 
-    {% comment %} ===== 1) READ COLLECTIONS FROM A NAVIGATION MENU (linklist) ===== {% endcomment %}
-    {% assign menu_handle = block.settings.menu_handle | strip | downcase %}
-    {% assign brand_menu = linklists[menu_handle] %}
-
-
-    {% if brand_menu %}
-  {% assign menu_found = true %}
-{% else %}
-  {% assign menu_found = false %}
-{% endif %}
-
-
-
-    {% assign menu_collection_count = 0 %}
+    {% comment %} ===== MERGE 3 MANUAL COLLECTION LISTS (50 each = 150 total) VIA PLAIN STRINGS ===== {% endcomment %}
+    {% assign list1 = block.settings.extra_collections_1 %}
+    {% assign list2 = block.settings.extra_collections_2 %}
+    {% assign list3 = block.settings.extra_collections_3 %}
+    {% assign count1 = list1.size %}
+    {% assign count2 = list2.size %}
+    {% assign count3 = list3.size %}
 
     {% capture pairs_string %}
-      {% for link in brand_menu.links %}
-        {% if link.type == 'collection_link' and link.object %}
-          {% assign menu_collection_count = menu_collection_count | plus: 1 %}
-          {% assign safe_title = link.object.title | replace: '::', ' ' | replace: '|', ' ' %}
-          {{ safe_title }}::{{ link.object.handle }}|
-        {% endif %}
+      {% for collection in list1 %}
+        {% assign safe_title = collection.title | replace: '::', ' ' | replace: '|', ' ' %}
+        {{ safe_title }}::{{ collection.handle }}|
       {% endfor %}
-
-      {% comment %} ===== 2) OPTIONAL MANUAL EXTRAS (capped at 50 by Shopify) ===== {% endcomment %}
-      {% assign manual_collections = block.settings.extra_collections %}
-      {% for collection in manual_collections %}
+      {% for collection in list2 %}
+        {% assign safe_title = collection.title | replace: '::', ' ' | replace: '|', ' ' %}
+        {{ safe_title }}::{{ collection.handle }}|
+      {% endfor %}
+      {% for collection in list3 %}
         {% assign safe_title = collection.title | replace: '::', ' ' | replace: '|', ' ' %}
         {{ safe_title }}::{{ collection.handle }}|
       {% endfor %}
     {% endcapture %}
 
-    {% assign manual_count = block.settings.extra_collections.size %}
     {% assign pairs_string = pairs_string | strip_newlines | strip %}
     {% assign raw_pairs = pairs_string | split: '|' %}
     {% assign sorted_pairs = raw_pairs | uniq | sort %}
@@ -341,7 +320,7 @@
 
     {% if block.settings.show_debug %}
       <div class="ai-brands-debug-{{ ai_gen_id }}">
-        DEBUG → Menu handle: "{{ menu_handle }}" | Menu found: {{ menu_found }} | Links in menu: {{ menu_links_count }} | Collection links matched: {{ menu_collection_count }} | Manual extras: {{ manual_count }} | Total shown: {{ total_shown }}
+        DEBUG → Part 1: {{ count1 }} | Part 2: {{ count2 }} | Part 3: {{ count3 }} | Total shown (after dedupe): {{ total_shown }}
       </div>
     {% endif %}
 
@@ -496,9 +475,7 @@
       </div>
     {% else %}
       <div class="ai-brands-empty-state-{{ ai_gen_id }}">
-        No brand collections found. Make sure the menu handle below matches a
-        real menu in Shopify Admin (Content → Menus) that contains collection
-        links, or select collections manually in "Extra collections" below.
+        Please select brand collections in Part 1, 2, or 3 below.
       </div>
     {% endif %}
   </div>
@@ -632,30 +609,26 @@
   "settings": [
     {
       "type": "header",
-      "content": "Brand collections (via Navigation Menu)"
+      "content": "Brand collections"
     },
     {
       "type": "paragraph",
-      "content": "Go to Shopify Admin → Content → Menus → Add menu. Name it anything (e.g. \"Brand Collections\") and add one menu item per brand, each linking to that collection. No 50-item limit like the collection picker. Then enter the menu's handle below (visible in the menu's admin URL, or just the lowercase-dashed version of the menu name)."
-    },
-    {
-      "type": "text",
-      "id": "menu_handle",
-      "label": "Menu handle",
-      "default": "brand-collections"
-    },
-    {
-      "type": "header",
-      "content": "Extra collections (optional, manual, max 50)"
-    },
-    {
-      "type": "paragraph",
-      "content": "Use this only for quick one-offs you don't want to add to the menu. Duplicates with the menu are automatically skipped."
+      "content": "Select up to 50 collections per part below (Shopify's picker limit). Spread your brands across Part 1, 2, and 3 for up to 150 total. Avoid selecting the same collection in more than one part — duplicates are automatically removed from the display either way."
     },
     {
       "type": "collection_list",
-      "id": "extra_collections",
-      "label": "Extra collections"
+      "id": "extra_collections_1",
+      "label": "Brand collections — Part 1"
+    },
+    {
+      "type": "collection_list",
+      "id": "extra_collections_2",
+      "label": "Brand collections — Part 2"
+    },
+    {
+      "type": "collection_list",
+      "id": "extra_collections_3",
+      "label": "Brand collections — Part 3"
     },
     {
       "type": "checkbox",
