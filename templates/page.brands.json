@@ -15,9 +15,70 @@
       "settings": {
         "content_width": "120ch"
       }
+    },
+    "blocks_Wt9cT8": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_7609748_e8dTTM": {
+          "type": "ai_gen_block_7609748",
+          "settings": {
+            "extra_collections_1": [
+              "accessories"
+            ],
+            "extra_collections_2": [],
+            "extra_collections_3": [],
+            "show_debug": false,
+            "page_title": "All Brands",
+            "page_subtitle": "Explore our complete collection of brands",
+            "title_size": 48,
+            "subtitle_size": 18,
+            "show_search": true,
+            "search_placeholder": "Search brands...",
+            "search_bg_color": "#ffffff",
+            "search_border_color": "#e0e0e0",
+            "search_focus_color": "#00a341",
+            "search_border_radius": 8,
+            "show_az_nav": true,
+            "az_nav_bg_color": "#ffffff",
+            "az_letter_bg": "#f0f0f0",
+            "az_letter_color": "#1a1a1a",
+            "az_letter_hover_bg": "#00a341",
+            "az_letter_hover_color": "#ffffff",
+            "az_nav_border_radius": 12,
+            "az_letter_border_radius": 8,
+            "alphabet_heading_size": 36,
+            "alphabet_heading_color": "#1a1a1a",
+            "alphabet_border_color": "#e0e0e0",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#e0e0e0",
+            "card_title_color": "#1a1a1a",
+            "card_title_size": 16,
+            "card_border_radius": 12,
+            "card_padding": 16,
+            "image_aspect_ratio": 100,
+            "image_placeholder_bg": "#f5f5f5",
+            "max_width": 1400,
+            "section_padding": 60,
+            "grid_gap": 24,
+            "columns_desktop": 5,
+            "columns_tablet": 3,
+            "columns_mobile": 2,
+            "background_color": "#f0f0f0",
+            "title_color": "#1a1a1a",
+            "text_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_7609748_e8dTTM"
+      ],
+      "name": "New brand section",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "blocks_Wt9cT8"
   ]
 }
