@@ -74,7 +74,15 @@
               "coats-3",
               "coats-4"
             ],
-            "extra_collections_2": [],
+            "extra_collections_2": [
+              "cold-protection",
+              "comfort-grip",
+              "connectors",
+              "cooling-protection",
+              "coveralls-1",
+              "coveralls",
+              "coveralls-2"
+            ],
             "extra_collections_3": [],
             "show_debug": false,
             "page_title": "All Brands",
